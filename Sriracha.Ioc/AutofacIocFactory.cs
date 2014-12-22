@@ -29,5 +29,26 @@ namespace Sriracha.Ioc
             }
         }
 
+
+
+        public object Get(Type type, Dictionary<Type, object> parameters = null)
+        {
+            if (parameters != null && parameters.Count > 0)
+            {
+                var parameterArray = parameters.Select(i => new TypedParameter(i.Key, i.Value)).ToArray();
+                return _context.Resolve(type, parameterArray);
+            }
+            else
+            {
+                return _context.Resolve(type);
+            }
+        }
+
+        public void RegisterAssembly(System.Reflection.Assembly assembly)
+        {
+            var builder = new ContainerBuilder();
+            builder.RegisterAssemblyTypes(assembly).AsSelf();
+            builder.Update(_context.ComponentRegistry);
+        }
     }
 }

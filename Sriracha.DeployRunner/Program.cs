@@ -1,6 +1,7 @@
 ﻿using CommandLine;
 using CommandLine.Text;
 using Common.Logging;
+using Sriracha.Data.Deployment;
 using Sriracha.Ioc;
 using System;
 using System.Collections.Generic;
@@ -20,15 +21,17 @@ namespace Sriracha.DeployRunner
             [Option('l', "logFile")]
             public string LogFile { get; set; }
 
-            [Option('c', "configFile", Required = true)]
+            [Option('c', "configFile")]
             public string ConfigFile { get; set; }
 
             [Option('t', "taskBinary", Required=true)]
             public string TaskBinary { get; set; }
 
             [Option('n', "taskName", Required = true)]
-            public bool TaskName { get; set; }
+            public string TaskName { get; set; }
 
+            [Option('p', "Pause")]
+            public bool Pause { get; set; }
 
             [ParserState]
             public IParserState LastParserState { get; set; }
@@ -43,14 +46,37 @@ namespace Sriracha.DeployRunner
 
         }
         
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
             var iocContainer = SrirachaIocProvider.Initialize(EnumIocMode.DeploymentRunner);
             var logger = iocContainer.Get<ILog>();
-            logger.Info("hello");
-            logger.Error("ERROR");
+            bool pause = false;
+            int result = 0;
 
-            Console.ReadKey();
+            try 
+            {
+                var options = new CommandLineOptions();
+                if (!Parser.Default.ParseArguments(args, options))
+                {
+                    throw new Exception(options.GetUsage());
+                }
+                pause = options.Pause;
+
+                var taskRunner = iocContainer.Get<IDeployTaskRunner>();
+                taskRunner.RunTask(options.TaskBinary, options.TaskName, options.ConfigFile);
+            }
+            catch(Exception err)
+            {
+                logger.Error(err);
+                result = 1;
+            }
+
+            if(pause)
+            {
+                Console.WriteLine("Press any key to exit...");
+                Console.ReadKey();
+            }
+            return result;
         }
     }
 }

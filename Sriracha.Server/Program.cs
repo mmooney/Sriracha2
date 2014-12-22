@@ -21,8 +21,8 @@ namespace Sriracha.Server
                     service.WhenStopped(a => a.Stop());
                 });
 
-                host.SetDescription("An application to manage sending sms messages and provide message status");
-                host.SetDisplayName("Sriracha");
+                host.SetDescription("Sriracha Deployment System");
+                host.SetDisplayName("Sriracha Deployment System");
                 host.SetServiceName("Sriracha");
                 host.RunAsNetworkService();
             });

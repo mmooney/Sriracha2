@@ -33,6 +33,9 @@
     <Reference Include="CommandLine">
       <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
     </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\packages\Common.Logging.2.3.1\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,7 +49,7 @@
     <Compile Include="Deployment\IDeployStatusReporter.cs" />
     <Compile Include="Deployment\IDeployTask.cs" />
     <Compile Include="Deployment\IDeployTaskRunner.cs" />
-    <Compile Include="Ioc\IIocContainer.cs" />
+    <Compile Include="Ioc\IIocFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

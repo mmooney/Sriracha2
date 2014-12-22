@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Sriracha.Data.Ioc
 {
-    public interface IIocContainer
+    public interface IIocFactory
     {
+        T Get<T>(Dictionary<Type, object> parameters = null);
     }
 }

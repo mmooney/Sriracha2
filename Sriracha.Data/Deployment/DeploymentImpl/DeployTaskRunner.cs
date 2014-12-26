@@ -1,4 +1,5 @@
 ﻿using Common.Logging;
+using Newtonsoft.Json;
 using Sriracha.Data.Ioc;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,10 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
             _log.Info("Getting type " + taskName);
             var taskType = assembly.GetType(taskName);
 
+            if(taskType == null)
+            {
+                throw new ArgumentException("Task type " + taskName  + " not found in " + taskBinaryPath);
+            }
             if(!typeof(IDeployTask).IsAssignableFrom(taskType))
             {
                 throw new ArgumentException("Type " + taskType.FullName + " does not implement interface " + typeof(IDeployTask).FullName);
@@ -53,8 +58,23 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
             _log.Info("Instantiating type " + taskType.FullName);
             var taskObject = (IDeployTask)_iocFactory.Get(taskType);
 
-            _log.Info("HI!");
+            object configObject = null;
+            var configType = taskObject.GetConfigType();
+            if(configType != null)
+            {
+                if(string.IsNullOrEmpty(configFile))
+                {
+                    throw new ArgumentNullException("configFile");
+                }
+                if(!File.Exists(configFile))
+                {
+                    throw new FileNotFoundException(configFile);
+                }
+                string data = File.ReadAllText(configFile);
+                configObject = JsonConvert.DeserializeObject(data, configType);
+            }
 
+            taskObject.Run(configObject);
         }
     }
 }

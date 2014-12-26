@@ -8,5 +8,8 @@ namespace Sriracha.Data.Deployment
 {
     public interface IDeployTask
     {
+        Type GetConfigType();
+
+        void Run(object config);
     }
 }

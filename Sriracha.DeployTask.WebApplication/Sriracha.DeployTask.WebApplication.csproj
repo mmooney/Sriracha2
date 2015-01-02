@@ -46,8 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeployWebApplicationSrirachaIocRegistar.cs" />
     <Compile Include="DeployWebApplication\DeployWebApplicationTask.cs" />
     <Compile Include="DeployWebApplication\DeployWebApplicationTaskConfig.cs" />
+    <Compile Include="Dropkick\DropkickImpl\DropkickRunner.cs" />
+    <Compile Include="Dropkick\DropkickRunnerContext.cs" />
+    <Compile Include="Dropkick\IDropkickRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

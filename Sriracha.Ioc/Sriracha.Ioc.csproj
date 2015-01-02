@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutofacBuilderWrapper.cs" />
     <Compile Include="AutofacIocFactory.cs" />
     <Compile Include="SrirachaAutofacModule.cs" />
     <Compile Include="SrirachaIocProvider.cs" />

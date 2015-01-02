@@ -54,6 +54,8 @@
     <Compile Include="Deployment\IDeployTask.cs" />
     <Compile Include="Deployment\IDeployTaskRunner.cs" />
     <Compile Include="Ioc\IIocFactory.cs" />
+    <Compile Include="Ioc\IIocBuilderWrapper.cs" />
+    <Compile Include="Ioc\ISrirachaIocRegistar.cs" />
     <Compile Include="JsonExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

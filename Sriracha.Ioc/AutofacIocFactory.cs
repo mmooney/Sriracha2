@@ -48,6 +48,16 @@ namespace Sriracha.Ioc
         {
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyTypes(assembly).AsSelf();
+            IIocBuilderWrapper builderWrapper = new AutofacBuilderWrapper(builder);
+            var typeRegistrarList = AppDomain.CurrentDomain.GetAssemblies().ToList()
+                .SelectMany(s => s.GetTypes())
+                .Where(p => typeof(ISrirachaIocRegistar).IsAssignableFrom(p)
+                        && p.IsClass).ToList();
+            foreach(var type in typeRegistrarList)
+            {
+                var registrar = (ISrirachaIocRegistar)Activator.CreateInstance(type);
+                registrar.RegisterTypes(builderWrapper);
+            }
             builder.Update(_context.ComponentRegistry);
         }
     }

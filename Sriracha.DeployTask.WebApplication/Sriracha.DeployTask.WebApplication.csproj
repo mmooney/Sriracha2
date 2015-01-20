@@ -50,6 +50,11 @@
     <Compile Include="DeployWebApplication\DeployWebApplicationTask.cs" />
     <Compile Include="DeployWebApplication\DeployWebApplicationTaskConfig.cs" />
     <Compile Include="Dropkick\DropkickImpl\DropkickRunner.cs" />
+    <Compile Include="Dropkick\DropkickResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DropkickResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Dropkick\DropkickRunnerContext.cs" />
     <Compile Include="Dropkick\IDropkickRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +67,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Resources\dropkick.zip" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Dropkick\DropkickResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DropkickResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

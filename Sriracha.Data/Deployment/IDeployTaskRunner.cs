@@ -8,6 +8,6 @@ namespace Sriracha.Data.Deployment
 {
     public interface IDeployTaskRunner
     {
-        void RunTask(string taskBinary, string taskName, string configFile);
+        void RunTask(IDeployStatusReporter statusReporter, string taskBinary, string taskName, string configFile);
     }
 }

@@ -2,6 +2,7 @@
 using CommandLine.Text;
 using Common.Logging;
 using Sriracha.Data.Deployment;
+using Sriracha.Data.Deployment.DeploymentImpl;
 using Sriracha.Ioc;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,11 @@ namespace Sriracha.DeployRunner
 {
     class Program
     {
+        public enum EnumOutputFormat
+        {
+            Text, 
+            Json
+        }
         public class CommandLineOptions
         {
             [Option('d', "workingDirectory")]
@@ -32,6 +38,9 @@ namespace Sriracha.DeployRunner
 
             [Option('p', "Pause")]
             public bool Pause { get; set; }
+
+            [Option('o', "OutputFormat")]
+            public EnumOutputFormat OutputFormat { get; set; }
 
             [ParserState]
             public IParserState LastParserState { get; set; }
@@ -63,7 +72,19 @@ namespace Sriracha.DeployRunner
                 pause = options.Pause;
 
                 var taskRunner = iocContainer.Get<IDeployTaskRunner>();
-                taskRunner.RunTask(options.TaskBinary, options.TaskName, options.ConfigFile);
+                switch(options.OutputFormat)
+                {
+                    case EnumOutputFormat.Text:
+                        taskRunner.RunTask(iocContainer.Get<LoggerDeployStatusReporter>(), options.TaskBinary, options.TaskName, options.ConfigFile);
+                        break;
+                    case EnumOutputFormat.Json:
+                        using (var outputStream = Console.OpenStandardOutput())
+                        using (var statusReporter = new JsonDeployStatusReporter(outputStream))
+                        {
+                            taskRunner.RunTask(statusReporter, options.TaskBinary, options.TaskName, options.ConfigFile);
+                        }
+                        break;
+                }
             }
             catch(Exception err)
             {

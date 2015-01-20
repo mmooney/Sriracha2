@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Sriracha.Data.Deployment
 {
-    interface IDeployStatusReporter
+    public interface IDeployStatusReporter
     {
+        void Info(string message);
+        void Debug(string message);
     }
 }

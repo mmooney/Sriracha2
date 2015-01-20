@@ -11,12 +11,10 @@ namespace Sriracha.DeployTask.WebApplication.DeployWebApplication
 {
     public class DeployWebApplicationTask : IDeployTask
     {
-        private readonly ILog _log;
         private readonly IDropkickRunner _dropkickRunner;
 
-        public DeployWebApplicationTask(ILog log, IDropkickRunner dropkickRunner)
+        public DeployWebApplicationTask(IDropkickRunner dropkickRunner)
         {
-            _log = log;
             _dropkickRunner = dropkickRunner;
         }
 
@@ -26,7 +24,7 @@ namespace Sriracha.DeployTask.WebApplication.DeployWebApplication
         }
 
 
-        public void Run(object config)
+        public void Run(IDeployStatusReporter statusReporter, object config)
         {
             if(config == null)
             {
@@ -37,7 +35,7 @@ namespace Sriracha.DeployTask.WebApplication.DeployWebApplication
                 throw new ArgumentException("config is not DeployWebApplicationTaskConfig");
             }
             var typedConfig = (DeployWebApplicationTaskConfig)config;
-            _log.Info("Run... " + typedConfig.ToJson(true));
+            statusReporter.Info("Run... " + typedConfig.ToJson(true));
         }
     }
 }

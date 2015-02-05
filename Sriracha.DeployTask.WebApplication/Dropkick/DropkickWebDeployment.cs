@@ -30,6 +30,13 @@ namespace Sriracha.DeployTask.WebApplication.Dropkick
                                             s.OpenFolderShareWithAuthentication(@"{{TargetWebsitePath}}", settings.TargetMachineUserName, settings.TargetMachinePassword);
                                         }
 
+                                        //Do NOT delete destination before deploying.  You will delete the Invoices and Assets folders, which we need to keep.
+                                        var x =  s.CopyDirectory(settings.SourceWebsitePath).To(@"{{TargetWebsitePath}}");
+                                        if(settings.DeleteTargetBeforeDeploy)
+                                        {
+                                            x.DeleteDestinationBeforeDeploying();
+                                        }
+
                                         string appPoolName = settings.ApplicationPoolName;
                                         if (string.IsNullOrWhiteSpace(appPoolName))
                                         {

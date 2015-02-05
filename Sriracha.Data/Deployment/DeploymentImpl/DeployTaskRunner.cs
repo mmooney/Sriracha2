@@ -1,6 +1,7 @@
 ﻿using Common.Logging;
 using Newtonsoft.Json;
 using Sriracha.Data.Ioc;
+using Sriracha.Data.Validation;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,10 +15,12 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
     public class DeployTaskRunner : IDeployTaskRunner
     {
         private readonly IIocFactory _iocFactory;
+        private readonly IDeployConfigurationValidator _validator;
 
-        public DeployTaskRunner(IIocFactory iocFactory)
+        public DeployTaskRunner(IIocFactory iocFactory, IDeployConfigurationValidator validator)
         {
             _iocFactory = iocFactory;
+            _validator = validator;
         }
 
         public void RunTask(IDeployStatusReporter statusReporter, string taskBinary, string taskName, string configFile, string workingDirectory)
@@ -70,7 +73,10 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
                 }
                 string data = File.ReadAllText(configFile);
                 configObject = JsonConvert.DeserializeObject(data, configType);
+
+                configObject = _validator.ValidateAndApplyDefaults(configObject);
             }
+
 
             var context = new TaskExecutionContext
             {

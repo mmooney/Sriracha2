@@ -11,5 +11,7 @@ namespace Sriracha.Data.Deployment
         void Info(string message, params object[] args);
         void Debug(string message, params object[] args);
         void Error(string message, object[] args);
+        void ErrorException(Exception err);
+        void ErrorException(Exception err, string message, params object[] args);
     }
 }

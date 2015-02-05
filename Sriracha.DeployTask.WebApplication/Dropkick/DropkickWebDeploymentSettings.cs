@@ -17,5 +17,9 @@ namespace Sriracha.DeployTask.WebApplication.Dropkick
 
         public string VirtualDirectoryName { get; set; }
         public string TargetWebsitePath { get; set; }
+
+        public string SourceWebsitePath { get; set; }
+
+        public bool DeleteTargetBeforeDeploy { get; set; }
     }
 }

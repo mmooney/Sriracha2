@@ -19,6 +19,7 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
             public DateTime DateTimeUtc { get; set; }
             public LogLevel LogLevel { get; set; }
             public string Message { get; set; }
+            public string Detail { get; set; }
         }
 
         public JsonDeployStatusReporter(Stream outputStream)
@@ -45,7 +46,7 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
             }
         }
 
-        private void InternalLog(string message, LogLevel logLevel, params object[] args)
+        private void InternalLog(string message, string detail, LogLevel logLevel, params object[] args)
         {
             if (args != null && args.Length > 0)
             {
@@ -55,7 +56,8 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
             {
                 DateTimeUtc = DateTime.UtcNow,
                 LogLevel = logLevel,
-                Message = message
+                Message = message, 
+                Detail = detail
             };
             _streamWriter.WriteLine(item.ToJson(false));
             _streamWriter.Flush();
@@ -63,17 +65,28 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
 
         public void Info(string message, params object[] args)
         {
-            this.InternalLog(message, LogLevel.Info, args);
+            this.InternalLog(message, null, LogLevel.Info, args);
         }
 
         public void Debug(string message, params object[] args)
         {
-            this.InternalLog(message, LogLevel.Debug, args);
+            this.InternalLog(message, null, LogLevel.Debug, args);
         }
 
         public void Error(string message, object[] args)
         {
-            this.InternalLog(message, LogLevel.Error, args);
+            this.InternalLog(message, null, LogLevel.Error, args);
+        }
+
+
+        public void ErrorException(Exception err)
+        {
+            this.InternalLog(err.Message, err.ToString(), LogLevel.Error);
+        }
+
+        public void ErrorException(Exception err, string message, params object[] args)
+        {
+            this.InternalLog(message, err.ToString(), LogLevel.Error, args);
         }
     }
 }

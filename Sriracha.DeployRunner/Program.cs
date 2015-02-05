@@ -78,13 +78,28 @@ namespace Sriracha.DeployRunner
                 switch(options.OutputFormat)
                 {
                     case EnumOutputFormat.Text:
-                        taskRunner.RunTask(iocContainer.Get<LoggerDeployStatusReporter>(), options.TaskBinary, options.TaskName, options.ConfigFile, workingDirectory);
+                        var textStatusReporter = iocContainer.Get<LoggerDeployStatusReporter>();
+                        try 
+                        {
+                            taskRunner.RunTask(iocContainer.Get<LoggerDeployStatusReporter>(), options.TaskBinary, options.TaskName, options.ConfigFile, workingDirectory);
+                        }
+                        catch(Exception err)
+                        {
+                            textStatusReporter.ErrorException(err);
+                        }
                         break;
                     case EnumOutputFormat.Json:
                         using (var outputStream = Console.OpenStandardOutput())
-                        using (var statusReporter = new JsonDeployStatusReporter(outputStream))
+                        using (var jsonStatusReporter = new JsonDeployStatusReporter(outputStream))
                         {
-                            taskRunner.RunTask(statusReporter, options.TaskBinary, options.TaskName, options.ConfigFile, workingDirectory);
+                            try 
+                            {
+                                taskRunner.RunTask(jsonStatusReporter, options.TaskBinary, options.TaskName, options.ConfigFile, workingDirectory);
+                            }
+                            catch(Exception err)
+                            {
+                                jsonStatusReporter.ErrorException(err);
+                            }
                         }
                         break;
                 }

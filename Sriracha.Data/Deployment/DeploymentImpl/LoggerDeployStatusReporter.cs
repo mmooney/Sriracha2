@@ -43,5 +43,23 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
             }
             _log.Error(message);
         }
+
+        public void ErrorException(Exception err)
+        {
+            this.ErrorException(err, err.Message);
+        }
+
+        public void ErrorException(Exception err, string message, params object[] args)
+        {
+            if (string.IsNullOrEmpty(message))
+            {
+                message = err.Message;
+            }
+            if (args != null && args.Length > 0)
+            {
+                message = string.Format(message, args);
+            }
+            _log.Error(message, err);
+        }
     }
 }

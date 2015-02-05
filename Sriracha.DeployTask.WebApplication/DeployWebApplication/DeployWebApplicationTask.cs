@@ -42,6 +42,8 @@ namespace Sriracha.DeployTask.WebApplication.DeployWebApplication
                 serverMap["Website"] = typedConfig.TargetMachineName;
                 var settings = new DropkickWebDeploymentSettings
                 {
+                    SourceWebsitePath = typedConfig.SourceWebsitePath,
+                    DeleteTargetBeforeDeploy = typedConfig.DeleteTargetBeforeDeploy,
                     ApplicationPoolName = typedConfig.ApplicationPoolName,
                     Environment = "ENV",
                     Role = "Website",
@@ -51,6 +53,10 @@ namespace Sriracha.DeployTask.WebApplication.DeployWebApplication
                     TargetWebsitePath = typedConfig.TargetWebsitePath,
                     VirtualDirectoryName = typedConfig.VirtualDirectoryName
                 };
+                if(settings.VirtualDirectoryName == "/")
+                {
+                    settings.VirtualDirectoryName = null;
+                }
                 dropkickContext.Run<DropkickWebDeployment>(settings, serverMap, "Website".ListMe());
 
                 context.Info("Done DeployWebsiteTask");

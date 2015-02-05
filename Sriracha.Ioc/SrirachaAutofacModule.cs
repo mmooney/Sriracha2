@@ -7,6 +7,8 @@ using Sriracha.Data.Impersonation.ImpersonationImpl;
 using Sriracha.Data.Ioc;
 using Sriracha.Data.Utility;
 using Sriracha.Data.Utility.UtilityImpl;
+using Sriracha.Data.Validation;
+using Sriracha.Data.Validation.ValidationImpl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +37,9 @@ namespace Sriracha.Ioc
 
             //Impersonation
             builder.RegisterType<Impersonator>().As<IImpersonator>();
+
+            //Validation
+            builder.RegisterType<DeployConfigurationValidator>().As<IDeployConfigurationValidator>();
             
             //Utility
             builder.RegisterType<Zipper>().As<IZipper>();

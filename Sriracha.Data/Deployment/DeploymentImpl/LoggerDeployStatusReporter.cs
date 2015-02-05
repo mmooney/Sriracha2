@@ -16,14 +16,32 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
             _log = log;
         }
 
-        public void Info(string message)
+        public void Info(string message, params object[] args)
         {
+            if(args != null && args.Length > 0)
+            {
+                message = string.Format(message, args);
+            }
             _log.Info(message);
         }
 
-        public void Debug(string message)
+        public void Debug(string message, params object[] args)
         {
+            if (args != null && args.Length > 0)
+            {
+                message = string.Format(message, args);
+            }
             _log.Debug(message);
+        }
+
+
+        public void Error(string message, object[] args)
+        {
+            if (args != null && args.Length > 0)
+            {
+                message = string.Format(message, args);
+            }
+            _log.Error(message);
         }
     }
 }

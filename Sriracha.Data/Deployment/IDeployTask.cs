@@ -10,6 +10,6 @@ namespace Sriracha.Data.Deployment
     {
         Type GetConfigType();
 
-        void Run(IDeployStatusReporter statusReporter, object config);
+        void Run(TaskExecutionContext context, object config);
     }
 }

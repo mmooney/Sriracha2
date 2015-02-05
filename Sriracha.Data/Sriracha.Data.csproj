@@ -42,6 +42,9 @@
     <Reference Include="Ionic.Zip">
       <HintPath>..\packages\DotNetZip.1.9.3\lib\net20\Ionic.Zip.dll</HintPath>
     </Reference>
+    <Reference Include="MMDB.Shared">
+      <HintPath>..\packages\MMDB.Shared.2.0.0.20\lib\net35\MMDB.Shared.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -62,10 +65,15 @@
     <Compile Include="Deployment\IDeployTask.cs" />
     <Compile Include="Deployment\IDeployTaskRunner.cs" />
     <Compile Include="Deployment\TaskExecutionContext.cs" />
+    <Compile Include="Impersonation\DeployCredentialsMasked.cs" />
+    <Compile Include="Impersonation\IImpersonator.cs" />
+    <Compile Include="Impersonation\ImpersonationContext.cs" />
+    <Compile Include="Impersonation\ImpersonationImpl\Impersonator.cs" />
     <Compile Include="Ioc\IIocFactory.cs" />
     <Compile Include="Ioc\IIocBuilderWrapper.cs" />
     <Compile Include="Ioc\ISrirachaIocRegistar.cs" />
     <Compile Include="JsonExtensions.cs" />
+    <Compile Include="ListExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\IProcessRunner.cs" />
     <Compile Include="Utility\IZipper.cs" />

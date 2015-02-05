@@ -45,8 +45,12 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
             }
         }
 
-        private void InternalLog(string message, LogLevel logLevel)
+        private void InternalLog(string message, LogLevel logLevel, params object[] args)
         {
+            if (args != null && args.Length > 0)
+            {
+                message = string.Format(message, args);
+            }
             var item = new JsonMessage()
             {
                 DateTimeUtc = DateTime.UtcNow,
@@ -57,14 +61,19 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
             _streamWriter.Flush();
         }
 
-        public void Info(string message)
+        public void Info(string message, params object[] args)
         {
-            this.InternalLog(message, LogLevel.Info);
+            this.InternalLog(message, LogLevel.Info, args);
         }
 
-        public void Debug(string message)
+        public void Debug(string message, params object[] args)
         {
-            this.InternalLog(message, LogLevel.Debug);
+            this.InternalLog(message, LogLevel.Debug, args);
+        }
+
+        public void Error(string message, object[] args)
+        {
+            this.InternalLog(message, LogLevel.Error, args);
         }
     }
 }

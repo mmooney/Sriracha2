@@ -2,6 +2,8 @@
 using Common.Logging.Configuration;
 using Sriracha.Data.Deployment;
 using Sriracha.Data.Deployment.DeploymentImpl;
+using Sriracha.Data.Impersonation;
+using Sriracha.Data.Impersonation.ImpersonationImpl;
 using Sriracha.Data.Ioc;
 using Sriracha.Data.Utility;
 using Sriracha.Data.Utility.UtilityImpl;
@@ -30,6 +32,9 @@ namespace Sriracha.Ioc
 
             //Deployment
             builder.RegisterType<DeployTaskRunner>().As<IDeployTaskRunner>();
+
+            //Impersonation
+            builder.RegisterType<Impersonator>().As<IImpersonator>();
             
             //Utility
             builder.RegisterType<Zipper>().As<IZipper>();

@@ -9,7 +9,7 @@ namespace System
 {
     public static class JsonExtensions
     {
-        public static string ToJson(this object thisObject, bool format)
+        public static string ToJson(this object thisObject, bool format=false)
         {
             if(format)
             {

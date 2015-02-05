@@ -8,7 +8,8 @@ namespace Sriracha.Data.Deployment
 {
     public interface IDeployStatusReporter
     {
-        void Info(string message);
-        void Debug(string message);
+        void Info(string message, params object[] args);
+        void Debug(string message, params object[] args);
+        void Error(string message, object[] args);
     }
 }

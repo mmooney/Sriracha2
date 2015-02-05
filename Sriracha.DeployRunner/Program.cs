@@ -1,11 +1,13 @@
 ﻿using CommandLine;
 using CommandLine.Text;
 using Common.Logging;
+using MMDB.Shared;
 using Sriracha.Data.Deployment;
 using Sriracha.Data.Deployment.DeploymentImpl;
 using Sriracha.Ioc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,17 +73,18 @@ namespace Sriracha.DeployRunner
                 }
                 pause = options.Pause;
 
+                string workingDirectory = StringHelper.IsNullOrEmpty(options.WorkingDirectory, Path.GetDirectoryName(Path.GetFullPath(options.TaskBinary)));
                 var taskRunner = iocContainer.Get<IDeployTaskRunner>();
                 switch(options.OutputFormat)
                 {
                     case EnumOutputFormat.Text:
-                        taskRunner.RunTask(iocContainer.Get<LoggerDeployStatusReporter>(), options.TaskBinary, options.TaskName, options.ConfigFile);
+                        taskRunner.RunTask(iocContainer.Get<LoggerDeployStatusReporter>(), options.TaskBinary, options.TaskName, options.ConfigFile, workingDirectory);
                         break;
                     case EnumOutputFormat.Json:
                         using (var outputStream = Console.OpenStandardOutput())
                         using (var statusReporter = new JsonDeployStatusReporter(outputStream))
                         {
-                            taskRunner.RunTask(statusReporter, options.TaskBinary, options.TaskName, options.ConfigFile);
+                            taskRunner.RunTask(statusReporter, options.TaskBinary, options.TaskName, options.ConfigFile, workingDirectory);
                         }
                         break;
                 }

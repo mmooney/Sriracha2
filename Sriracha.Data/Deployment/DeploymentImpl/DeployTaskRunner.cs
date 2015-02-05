@@ -20,7 +20,7 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
             _iocFactory = iocFactory;
         }
 
-        public void RunTask(IDeployStatusReporter statusReporter, string taskBinary, string taskName, string configFile)
+        public void RunTask(IDeployStatusReporter statusReporter, string taskBinary, string taskName, string configFile, string workingDirectory)
         {
             if(string.IsNullOrEmpty(taskBinary))
             {
@@ -36,7 +36,7 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
                 throw new FileNotFoundException(taskBinaryPath);
             }
             statusReporter.Debug("Loading task binary " + taskBinaryPath);
-            var assembly = Assembly.LoadFile(taskBinaryPath);
+            var assembly = Assembly.LoadFrom(taskBinaryPath);
 
             statusReporter.Info("Getting type " + taskName);
             var taskType = assembly.GetType(taskName);
@@ -72,7 +72,12 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
                 configObject = JsonConvert.DeserializeObject(data, configType);
             }
 
-            taskObject.Run(statusReporter, configObject);
+            var context = new TaskExecutionContext
+            {
+                StatusReporter = statusReporter,
+                DeploymentDirectory = workingDirectory
+            };
+            taskObject.Run(context, configObject);
         }
     }
 }

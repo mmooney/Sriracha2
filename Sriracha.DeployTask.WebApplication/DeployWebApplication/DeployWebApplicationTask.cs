@@ -24,7 +24,7 @@ namespace Sriracha.DeployTask.WebApplication.DeployWebApplication
         }
 
 
-        public void Run(IDeployStatusReporter statusReporter, object config)
+        public void Run(TaskExecutionContext context, object config)
         {
             if(config == null)
             {
@@ -35,7 +35,29 @@ namespace Sriracha.DeployTask.WebApplication.DeployWebApplication
                 throw new ArgumentException("config is not DeployWebApplicationTaskConfig");
             }
             var typedConfig = (DeployWebApplicationTaskConfig)config;
-            statusReporter.Info("Run... " + typedConfig.ToJson(true));
+            var deployment = new DropkickWebDeployment();
+            using(var dropkickContext = _dropkickRunner.Create(context))
+            {
+                var serverMap = deployment.GetDefaultServerMap();
+                serverMap["Website"] = typedConfig.TargetMachineName;
+                var settings = new DropkickWebDeploymentSettings
+                {
+                    ApplicationPoolName = typedConfig.ApplicationPoolName,
+                    Environment = "ENV",
+                    Role = "Website",
+                    SiteName = typedConfig.SiteName,
+                    TargetMachinePassword = typedConfig.TargetMachinePassword,
+                    TargetMachineUserName = typedConfig.TargetMachineUserName,
+                    TargetWebsitePath = typedConfig.TargetWebsitePath,
+                    VirtualDirectoryName = typedConfig.VirtualDirectoryName
+                };
+                dropkickContext.Run<DropkickWebDeployment>(settings, serverMap, "Website".ListMe());
+
+                context.Info("Done DeployWebsiteTask");
+
+                //return context.BuildResult();
+            }
+            context.Info("Run... " + typedConfig.ToJson(true));
         }
     }
 }

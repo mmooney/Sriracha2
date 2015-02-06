@@ -28,7 +28,6 @@ namespace Sriracha.DeployTask.WebApplication.DeployWebApplication
         [Required]
         public string TargetWebsitePath { get; set; }
 
-        [DefaultValue("/")]
         public string VirtualDirectoryName { get; set; }
 
         [DefaultValue(true)]

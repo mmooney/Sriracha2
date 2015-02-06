@@ -42,8 +42,13 @@ namespace Sriracha.DeployTask.WebApplication.Dropkick
                                         {
                                             appPoolName = settings.SiteName;
                                         }
+                                        string virtualDirectory = StringHelper.IsNull(settings.VirtualDirectoryName, string.Empty);
+                                        if(virtualDirectory == "/")
+                                        {
+                                            virtualDirectory = string.Empty;
+                                        }
                                         var iis = s.Iis7Site(settings.SiteName, @"{{TargetWebsitePath}}", default(int))
-                                            .VirtualDirectory(StringHelper.IsNullOrEmpty(settings.VirtualDirectoryName, "/"))
+                                            .VirtualDirectory(virtualDirectory)
                                             .SetAppPoolTo(appPoolName, pool =>
                                             {
                                                 pool.SetRuntimeToV4();

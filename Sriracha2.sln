@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.Ioc", "Sriracha.Io
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.DeployTask.WebApplication", "DeployTask\Sriracha.DeployTask.WebApplication\Sriracha.DeployTask.WebApplication.csproj", "{330F28D2-4C6B-415B-90FA-0598D24AF074}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.DeployTask.Azure", "Sriracha.DeployTask.Azure\Sriracha.DeployTask.Azure.csproj", "{DF138EF6-ACF7-4898-8A95-B3A11FC4EEF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,11 +49,16 @@ Global
 		{330F28D2-4C6B-415B-90FA-0598D24AF074}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{330F28D2-4C6B-415B-90FA-0598D24AF074}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{330F28D2-4C6B-415B-90FA-0598D24AF074}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF138EF6-ACF7-4898-8A95-B3A11FC4EEF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF138EF6-ACF7-4898-8A95-B3A11FC4EEF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF138EF6-ACF7-4898-8A95-B3A11FC4EEF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF138EF6-ACF7-4898-8A95-B3A11FC4EEF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{330F28D2-4C6B-415B-90FA-0598D24AF074} = {8ED1BB07-5774-448D-BA75-A217541C5CA1}
+		{DF138EF6-ACF7-4898-8A95-B3A11FC4EEF0} = {8ED1BB07-5774-448D-BA75-A217541C5CA1}
 	EndGlobalSection
 EndGlobal

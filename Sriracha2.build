@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<project name="Sriracha" xmlns="http://nant.sf.net/release/0.86-beta1/nant.xsd">
+  <description />
+  <property name="BuildDirectory" value="${directory::get-current-directory()}" />
+  <property name="BuildNumber" value="${environment::get-variable('BUILD_NUMBER')}"/>
+	<target name="BuildSolution" description="Build Solution">
+    <msbuild project=".\Sriracha2.sln" target="Rebuild">
+      <property name="Configuration" value="ReleaseTasks"/>
+    </msbuild>
+    <!--<msbuild project=".\Sriracha.Deploy.sln" target="Rebuild">
+      <property name="Configuration" value="ReleaseRepositories"/>
+    </msbuild>-->
+    <msbuild project=".\Sriracha2.sln" target="Rebuild">
+      <property name="Configuration" value="Release"/>
+    </msbuild>
+  </target>
+
+</project>
+
+

@@ -19,6 +19,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.DeployTask.WebAppl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.DeployTask.Azure", "DeployTask\Sriracha.DeployTask.Azure\Sriracha.DeployTask.Azure.csproj", "{DF138EF6-ACF7-4898-8A95-B3A11FC4EEF0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1C409861-C7F4-4084-ABB0-CACDB815EA15}"
+	ProjectSection(SolutionItems) = preProject
+		Sriracha2.build = Sriracha2.build
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

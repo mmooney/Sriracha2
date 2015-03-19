@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.Ioc", "Sriracha.Io
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.DeployTask.WebApplication", "DeployTask\Sriracha.DeployTask.WebApplication\Sriracha.DeployTask.WebApplication.csproj", "{330F28D2-4C6B-415B-90FA-0598D24AF074}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.DeployTask.Azure", "Sriracha.DeployTask.Azure\Sriracha.DeployTask.Azure.csproj", "{DF138EF6-ACF7-4898-8A95-B3A11FC4EEF0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.DeployTask.Azure", "DeployTask\Sriracha.DeployTask.Azure\Sriracha.DeployTask.Azure.csproj", "{DF138EF6-ACF7-4898-8A95-B3A11FC4EEF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

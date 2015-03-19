@@ -40,7 +40,9 @@ namespace Sriracha.Data.Validation.ValidationImpl
             foreach (var propInfo in configType.GetProperties())
             {
                 var value = propInfo.GetValue(newObject);
-                if (value == null || (propInfo.PropertyType == typeof(string) && string.IsNullOrEmpty((string)value)))
+                if (value == null 
+                    || (propInfo.PropertyType == typeof(string) && string.IsNullOrEmpty((string)value))
+                    || (propInfo.PropertyType == typeof(int) && (int)value == 0))
                 {
                     var defaultAttribute = propInfo.GetCustomAttributes(typeof(DefaultValueAttribute), true).Cast<DefaultValueAttribute>().FirstOrDefault();
                     if(defaultAttribute != null)

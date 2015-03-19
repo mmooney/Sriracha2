@@ -32,5 +32,9 @@ namespace Sriracha.DeployTask.WebApplication.DeployWebApplication
 
         [DefaultValue(true)]
         public bool DeleteTargetBeforeDeploy { get; set; }
+
+        public Dictionary<string, string> AppSettingValues { get; set; }
+        public Dictionary<string, string> ConnectionStringValues { get; set; }
+        public Dictionary<string, string> XpathValues { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 namespace Sriracha.DeployTask.WebApplication.Dropkick
-{
+{  
     public class DropkickWebDeploymentSettings : DropkickConfiguration
     {
         public string TargetMachineUserName { get; set; }
@@ -21,5 +21,9 @@ namespace Sriracha.DeployTask.WebApplication.Dropkick
         public string SourceWebsitePath { get; set; }
 
         public bool DeleteTargetBeforeDeploy { get; set; }
+
+        public string AppSettingValuesJson { get; set; }
+        public string ConnectionStringValuesJson { get; set; }
+        public string XpathValuesJson { get; set; }
     }
 }

@@ -51,7 +51,10 @@ namespace Sriracha.DeployTask.WebApplication.DeployWebApplication
                     TargetMachinePassword = typedConfig.TargetMachinePassword,
                     TargetMachineUserName = typedConfig.TargetMachineUserName,
                     TargetWebsitePath = typedConfig.TargetWebsitePath,
-                    VirtualDirectoryName = typedConfig.VirtualDirectoryName
+                    VirtualDirectoryName = typedConfig.VirtualDirectoryName,
+                    AppSettingValuesJson = ToDictionaryJson(typedConfig.AppSettingValues),
+                    ConnectionStringValuesJson = ToDictionaryJson(typedConfig.ConnectionStringValues),
+                    XpathValuesJson = ToDictionaryJson(typedConfig.XpathValues)
                 };
                 dropkickContext.Run<DropkickWebDeployment>(settings, serverMap, "Website".ListMe());
 
@@ -60,6 +63,18 @@ namespace Sriracha.DeployTask.WebApplication.DeployWebApplication
                 //return context.BuildResult();
             }
             context.Info("Run... " + typedConfig.ToJson(true));
+        }
+
+        private string ToDictionaryJson(Dictionary<string, string> dictionary)
+        {
+            if(dictionary == null)
+            {
+                return null;
+            }
+            else 
+            {
+                return dictionary.ToJson();
+            }
         }
     }
 }

@@ -8,7 +8,14 @@ using System.Text;
 namespace Sriracha.DeployTask.Azure.DeployCloudService
 {
     public class DeployCloudServiceTaskConfig
-    {
+    {  
+        public class CloudServiceRole
+        {
+            public int? InstanceCount { get; set; }
+            public Dictionary<string, string> ConfigurationSettingValues { get; set; }
+            public Dictionary<string, string> CertificateThumbprints { get; set; }
+        }
+
         [Required]
         public string AzureSubscriptionIdentifier { get; set; }
 
@@ -32,5 +39,7 @@ namespace Sriracha.DeployTask.Azure.DeployCloudService
 
         [DefaultValue(30)]
         public int AzureTimeoutMinutes { get; set; }
+
+        public Dictionary<string,CloudServiceRole> RoleList { get; set; }
     }
 }

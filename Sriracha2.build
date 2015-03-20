@@ -15,6 +15,24 @@
     </msbuild>
   </target>
 
+  <target name="PackageSolution">
+    <delete dir=".\Publish"/>
+    <copy todir=".\Publish\Runners\Azure">
+      <fileset basedir=".\Sriracha.DeployRunner\bin\Release">
+        <include name="**/*.config"/>
+        <include name="**/*.dll"/>
+        <include name="**/*.exe"/>
+      </fileset>
+    </copy>
+    <copy todir=".\Publish\Runners\Azure">
+      <fileset basedir=".\DeployTask\Sriracha.DeployTask.Azure\bin\Release">
+        <include name="**/*.config"/>
+        <include name="**/*.dll"/>
+        <include name="**/*.exe"/>
+      </fileset>
+    </copy>
+  </target>
+
 </project>
 
 

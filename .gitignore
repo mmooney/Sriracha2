@@ -160,3 +160,4 @@ PublishTemp/**/*
 
 output.log
 Publish
+/NugetStaging

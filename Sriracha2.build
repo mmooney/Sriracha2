@@ -22,14 +22,14 @@
 
   <target name="PackageSolution">
     <delete dir=".\Publish"/>
-    <copy todir=".\Publish\Runners\Azure">
+    <copy todir=".\NugetStaging\Azure\tools\Runners\Azure">
       <fileset basedir=".\Sriracha.DeployRunner\bin\Release">
         <include name="**/*.config"/>
         <include name="**/*.dll"/>
         <include name="**/*.exe"/>
       </fileset>
     </copy>
-    <copy todir=".\Publish\Runners\Azure">
+    <copy todir=".\NugetStaging\Azure\tools\Runners\Azure">
       <fileset basedir=".\DeployTask\Sriracha.DeployTask.Azure\bin\Release">
         <include name="**/*.config"/>
         <include name="**/*.dll"/>
@@ -37,20 +37,25 @@
         <include name="**/*.json"/>
       </fileset>
     </copy>
+    <copy todir=".\NugetStaging\Azure\tools">
+      <fileset basedir=".\DeployTask\Sriracha.DeployTask.Azure\tools">
+        <include name="**/*.ps1"/>
+      </fileset>
+    </copy>
   </target>
 
   <target name="NuGetPackageRunners">
-    <mkdir dir=".\Publish\NuGet\Runners\Azure"/>
+    <mkdir dir=".\Publish\NuGet"/>
     <exec program=".\.nuget\nuget.exe" verbose="true">
       <arg value="pack"/>
       <arg value=".\DeployTask\Sriracha.DeployTask.Azure\Nuget\Sriracha.DeployTask.Azure.csproj.nuspec"/>
       <arg value="-OutputDirectory"/>
-      <arg value=".\Publish\NuGet\Runners\Azure"/>
+      <arg value=".\Publish\NuGet"/>
       <arg value="-Verbosity"/>
       <arg value="detailed"/>
       <arg value="-Tool"/>
       <arg value="-BasePath"/>
-      <arg value=".\Publish\Runners\Azure"/>
+      <arg value=".\NugetStaging\Azure"/>
       <arg value="-Version"/>
       <arg value="${BuildNumber}"/>
     </exec>

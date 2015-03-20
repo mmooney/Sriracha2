@@ -36,6 +36,17 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
             string taskBinaryPath = Path.GetFullPath(taskBinary);
             if(!File.Exists(taskBinaryPath))
             {
+                //If the working directory is not the EXE directory, it might not find the DLL in the current directory.
+                //  So try to explicitly check the EXE directory
+                var exeDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                var tempTaskBinaryPath = Path.Combine(exeDirectory, Path.GetFileName(taskBinaryPath));
+                if(File.Exists(tempTaskBinaryPath))
+                {
+                    taskBinaryPath = tempTaskBinaryPath;
+                }
+            }
+            if(!File.Exists(taskBinaryPath))
+            {
                 throw new FileNotFoundException(taskBinaryPath);
             }
             statusReporter.Debug("Loading task binary " + taskBinaryPath);

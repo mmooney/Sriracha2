@@ -22,6 +22,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1C409861-C7F4-4084-ABB0-CACDB815EA15}"
 	ProjectSection(SolutionItems) = preProject
 		build.bat = build.bat
+		NugetPackage.bat = NugetPackage.bat
 		Sriracha2.build = Sriracha2.build
 	EndProjectSection
 EndProject

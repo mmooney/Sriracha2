@@ -1,0 +1,1 @@
+.\ThirdParty\nant-0.92\NAnt.exe -buildfile:.\Sriracha2.build BuildSolution PackageSolution

@@ -159,3 +159,4 @@ PublishTemp/**/*
 /Sriracha.Deploy.Tasks.Azure.Tests/Azure.publishsettings.private
 
 output.log
+Publish

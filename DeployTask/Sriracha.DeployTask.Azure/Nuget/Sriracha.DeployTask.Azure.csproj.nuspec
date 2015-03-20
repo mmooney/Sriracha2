@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Sriracha.DeployTask.Azure</id>
+    <version>$version$</version>
+    <title>Sriracha.DeployTask.Azure</title>
+    <authors>Mike Mooney, MMDB Solutions</authors>
+    <owners>Mike Mooney, MMDB Solutions</owners>
+    <licenseUrl>http://github.com/mmooney/Sriracha2/blob/master/LICENSE.txt</licenseUrl>
+    <projectUrl>http://github.com/mmooney/Sriracha2</projectUrl>
+    <iconUrl>http://www.gravatar.com/avatar/583bdba0c32e151c9d2eafdd32555c17.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Sriracha Deployment Tasks for Azure</description>
+    <copyright>Copyright 2015</copyright>
+    <tags>.net mmdb azure management rest api deploy</tags>
+  </metadata>
+</package>

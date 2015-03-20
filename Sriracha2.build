@@ -2,12 +2,13 @@
 <project name="Sriracha" xmlns="http://nant.sf.net/release/0.86-beta1/nant.xsd">
   <description />
   <property name="BuildDirectory" value="${directory::get-current-directory()}" />
-	<exec program=".nuget\NuGet.exe" verbose="true">
-		<arg value="restore"/>
-		<arg value="Sriracha2.sln"/>
-	</exec>
+  <property name="BuildNumber" value="${environment::get-variable('BUILD_NUMBER')}"/>
+  <exec program=".nuget\NuGet.exe" verbose="true">
+    <arg value="restore"/>
+    <arg value="Sriracha2.sln"/>
+  </exec>
   <!--<property name="BuildNumber" value="${environment::get-variable('BUILD_NUMBER')}"/>-->
-	<target name="BuildSolution" description="Build Solution">
+  <target name="BuildSolution" description="Build Solution">
     <!--<msbuild project=".\Sriracha2.sln" target="Rebuild">
       <property name="Configuration" value="ReleaseTasks"/>
     </msbuild>-->
@@ -33,10 +34,27 @@
         <include name="**/*.config"/>
         <include name="**/*.dll"/>
         <include name="**/*.exe"/>
+        <include name="**/*.json"/>
       </fileset>
     </copy>
   </target>
 
+  <target name="NuGetPackageRunners">
+    <mkdir dir=".\Publish\NuGet\Runners\Azure"/>
+    <exec program=".\.nuget\nuget.exe" verbose="true">
+      <arg value="pack"/>
+      <arg value=".\DeployTask\Sriracha.DeployTask.Azure\Nuget\Sriracha.DeployTask.Azure.csproj.nuspec"/>
+      <arg value="-OutputDirectory"/>
+      <arg value=".\Publish\NuGet\Runners\Azure"/>
+      <arg value="-Verbosity"/>
+      <arg value="detailed"/>
+      <arg value="-Tool"/>
+      <arg value="-BasePath"/>
+      <arg value=".\Publish\Runners\Azure"/>
+      <arg value="-Version"/>
+      <arg value="${BuildNumber}"/>
+    </exec>
+  </target>
 </project>
 
 

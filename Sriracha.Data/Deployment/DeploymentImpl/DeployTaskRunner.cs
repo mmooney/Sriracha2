@@ -43,7 +43,10 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
 
             statusReporter.Info("Getting type " + taskName);
             var taskType = assembly.GetType(taskName);
-
+            if(taskType == null)
+            {
+                taskType = assembly.GetTypes().FirstOrDefault(i=>i.Name == taskName);
+            }
             if(taskType == null)
             {
                 throw new ArgumentException("Task type " + taskName  + " not found in " + taskBinaryPath);

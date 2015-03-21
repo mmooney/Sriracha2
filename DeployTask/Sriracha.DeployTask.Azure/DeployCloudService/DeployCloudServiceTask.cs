@@ -104,8 +104,11 @@ namespace Sriracha.DeployTask.Azure.DeployCloudService
                 context.Info("Deployment already exists, upgrading...");
                 client.UpgradeCloudServiceDeployment(typedConfig.ServiceName, blobUrl, configurationData, typedConfig.DeploymentSlot);
             }
+            context.Info("Waiting for cloud service deployment status to complete...");
             deployment = client.WaitForCloudServiceDeploymentStatus(typedConfig.ServiceName, typedConfig.DeploymentSlot, DeploymentItem.EnumDeploymentItemStatus.Running, TimeSpan.FromMinutes(typedConfig.AzureTimeoutMinutes));
+            context.Info("Waiting for cloud service instance status to complete...");
             deployment = client.WaitForAllCloudServiceInstanceStatus(typedConfig.ServiceName, typedConfig.DeploymentSlot, RoleInstance.EnumInstanceStatus.ReadyRole, TimeSpan.FromMinutes(typedConfig.AzureTimeoutMinutes));
+            context.Info("Azure deployment complete");
             //_logger.Info("Done DeployCloudService.InternalExecute");
             //return context.BuildResult();
         }

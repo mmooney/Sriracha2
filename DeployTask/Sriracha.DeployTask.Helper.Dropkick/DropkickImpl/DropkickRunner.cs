@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sriracha.DeployTask.WebApplication.Dropkick.DropkickImpl
+namespace Sriracha.DeployTask.Helper.Dropkick.DropkickImpl
 {
     public class DropkickRunner : IDropkickRunner
     {

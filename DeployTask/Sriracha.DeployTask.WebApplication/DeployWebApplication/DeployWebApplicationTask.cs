@@ -1,5 +1,6 @@
 ﻿using Common.Logging;
 using Sriracha.Data.Deployment;
+using Sriracha.DeployTask.Helper.Dropkick;
 using Sriracha.DeployTask.WebApplication.Dropkick;
 using System;
 using System.Collections.Generic;

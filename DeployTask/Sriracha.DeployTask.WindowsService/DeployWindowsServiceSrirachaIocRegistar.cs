@@ -1,15 +1,14 @@
 ﻿using Sriracha.Data.Ioc;
 using Sriracha.DeployTask.Helper.Dropkick;
-using Sriracha.DeployTask.WebApplication.Dropkick;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sriracha.DeployTask.WebApplication
+namespace Sriracha.DeployTask.WindowsService
 {
-    public class DeployWebApplicationSrirachaIocRegistar : ISrirachaIocRegistar
+    public class DeployWindowsServiceSrirachaIocRegistar : ISrirachaIocRegistar
     {
         public void RegisterTypes(IIocBuilderWrapper builderWrapper)
         {

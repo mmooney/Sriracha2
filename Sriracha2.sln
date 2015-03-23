@@ -12,6 +12,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeployTasks", "DeployTasks", "{8ED1BB07-5774-448D-BA75-A217541C5CA1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.DeployRunner", "Sriracha.DeployRunner\Sriracha.DeployRunner.csproj", "{26E3B370-E514-48F3-8979-109421D97AE5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{67103C45-9AED-4D99-9930-5DFEC91F134A} = {67103C45-9AED-4D99-9930-5DFEC91F134A}
+		{330F28D2-4C6B-415B-90FA-0598D24AF074} = {330F28D2-4C6B-415B-90FA-0598D24AF074}
+		{E7F6D2DB-0333-4578-BB7F-CD57E7CFECF1} = {E7F6D2DB-0333-4578-BB7F-CD57E7CFECF1}
+		{DF138EF6-ACF7-4898-8A95-B3A11FC4EEF0} = {DF138EF6-ACF7-4898-8A95-B3A11FC4EEF0}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.Ioc", "Sriracha.Ioc\Sriracha.Ioc.csproj", "{811BDA5D-8CD8-44E7-AD43-E7FF2B294DB2}"
 EndProject
@@ -25,6 +31,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		NugetPackage.bat = NugetPackage.bat
 		Sriracha2.build = Sriracha2.build
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.DeployTask.WindowsService", "DeployTask\Sriracha.DeployTask.WindowsService\Sriracha.DeployTask.WindowsService.csproj", "{E7F6D2DB-0333-4578-BB7F-CD57E7CFECF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.DeployTask.Helper.Dropkick", "DeployTask\Sriracha.DeployTask.Helper.Dropkick\Sriracha.DeployTask.Helper.Dropkick.csproj", "{67103C45-9AED-4D99-9930-5DFEC91F134A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +70,14 @@ Global
 		{DF138EF6-ACF7-4898-8A95-B3A11FC4EEF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF138EF6-ACF7-4898-8A95-B3A11FC4EEF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF138EF6-ACF7-4898-8A95-B3A11FC4EEF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7F6D2DB-0333-4578-BB7F-CD57E7CFECF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7F6D2DB-0333-4578-BB7F-CD57E7CFECF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7F6D2DB-0333-4578-BB7F-CD57E7CFECF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7F6D2DB-0333-4578-BB7F-CD57E7CFECF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67103C45-9AED-4D99-9930-5DFEC91F134A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67103C45-9AED-4D99-9930-5DFEC91F134A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67103C45-9AED-4D99-9930-5DFEC91F134A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67103C45-9AED-4D99-9930-5DFEC91F134A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,5 +85,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{330F28D2-4C6B-415B-90FA-0598D24AF074} = {8ED1BB07-5774-448D-BA75-A217541C5CA1}
 		{DF138EF6-ACF7-4898-8A95-B3A11FC4EEF0} = {8ED1BB07-5774-448D-BA75-A217541C5CA1}
+		{E7F6D2DB-0333-4578-BB7F-CD57E7CFECF1} = {8ED1BB07-5774-448D-BA75-A217541C5CA1}
+		{67103C45-9AED-4D99-9930-5DFEC91F134A} = {8ED1BB07-5774-448D-BA75-A217541C5CA1}
 	EndGlobalSection
 EndGlobal

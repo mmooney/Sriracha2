@@ -61,16 +61,8 @@
     <Compile Include="DeployWebApplicationSrirachaIocRegistar.cs" />
     <Compile Include="DeployWebApplication\DeployWebApplicationTask.cs" />
     <Compile Include="DeployWebApplication\DeployWebApplicationTaskConfig.cs" />
-    <Compile Include="Dropkick\DropkickImpl\DropkickRunner.cs" />
-    <Compile Include="Dropkick\DropkickResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DropkickResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Dropkick\DropkickRunnerContext.cs" />
     <Compile Include="Dropkick\DropkickWebDeployment.cs" />
     <Compile Include="Dropkick\DropkickWebDeploymentSettings.cs" />
-    <Compile Include="Dropkick\IDropkickRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -78,19 +70,13 @@
       <Project>{5b90eb90-ba14-429d-a56a-3e7ce7cbefac}</Project>
       <Name>Sriracha.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Sriracha.DeployTask.Helper.Dropkick\Sriracha.DeployTask.Helper.Dropkick.csproj">
+      <Project>{67103c45-9aed-4d99-9930-5dfec91f134a}</Project>
+      <Name>Sriracha.DeployTask.Helper.Dropkick</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Resources\dropkick.zip" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Dropkick\DropkickResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>DropkickResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

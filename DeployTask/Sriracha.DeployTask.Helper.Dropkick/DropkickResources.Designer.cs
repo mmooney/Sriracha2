@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sriracha.DeployTask.WebApplication.Dropkick {
+namespace Sriracha.DeployTask.Helper.Dropkick {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Sriracha.DeployTask.WebApplication.Dropkick {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sriracha.DeployTask.WebApplication.Dropkick.DropkickResources", typeof(DropkickResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sriracha.DeployTask.Helper.Dropkick.DropkickResources", typeof(DropkickResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -85,6 +85,7 @@ namespace Sriracha.DeployRunner
                         }
                         catch(Exception err)
                         {
+                            result = 1;
                             textStatusReporter.ErrorException(err);
                         }
                         break;
@@ -98,6 +99,7 @@ namespace Sriracha.DeployRunner
                             }
                             catch(Exception err)
                             {
+                                result = 1;
                                 jsonStatusReporter.ErrorException(err);
                             }
                         }

@@ -17,7 +17,7 @@ namespace Sriracha.DeployTask.Helper.Dropkick
         private IProcessRunner _processRunner;
         private TaskExecutionContext _taskExecutionContext;
         private string _dropkickDirectory;
-        private IImpersonator _impersonator;
+        //private IImpersonator _impersonator;
 
         public DropkickRunnerContext(IProcessRunner processRunner, TaskExecutionContext taskExecutionContext, string dropkickDirectory)
         {
@@ -67,21 +67,21 @@ namespace Sriracha.DeployTask.Helper.Dropkick
             using (var errorOutputWriter = new StringWriter())
             {
                 int exeResult;
-                if (string.IsNullOrEmpty(_taskExecutionContext.DeployCredentialsUserName) || string.IsNullOrEmpty(_taskExecutionContext.DeployCredentialsUserPassword))
-                {
+                //if (string.IsNullOrEmpty(_taskExecutionContext.DeployCredentialsUserName) || string.IsNullOrEmpty(_taskExecutionContext.DeployCredentialsUserPassword))
+                //{
                     exeResult = _processRunner.Run(dropkickExePath, exeParameters, standardOutputWriter, errorOutputWriter, Path.GetDirectoryName(deploymentFilePath));
-                }
-                else
-                {
-                    using (var impersonation = _impersonator.BeginImpersonation(_taskExecutionContext.DeployCredentialsUserName, _taskExecutionContext.DeployCredentialsUserPassword, _taskExecutionContext.DeployCredentialsDomain))
-                    {
-                        _taskExecutionContext.Info("Starting process as {0} impersonating {1}", WindowsIdentity.GetCurrent().Name, _taskExecutionContext.DeployCredentialsUserName);
-                        string fullExePath = Path.GetFullPath(dropkickExePath);
-                        _taskExecutionContext.Info("For Options.ExecutablePath {0}, using {1}", dropkickExePath, fullExePath);
-                        //result = _processRunner.RunAsUser(exePath, formattedArgs, standardOutputWriter, errorOutputWriter, credentials.Domain, credentials.UserName, password);
-                        exeResult = _processRunner.RunAsToken(fullExePath, exeParameters, standardOutputWriter, errorOutputWriter, impersonation.TokenHandle);
-                    }
-                }
+                //}
+                //else
+                //{
+                //    using (var impersonation = _impersonator.BeginImpersonation(_taskExecutionContext.DeployCredentialsUserName, _taskExecutionContext.DeployCredentialsUserPassword, _taskExecutionContext.DeployCredentialsDomain))
+                //    {
+                //        _taskExecutionContext.Info("Starting process as {0} impersonating {1}", WindowsIdentity.GetCurrent().Name, _taskExecutionContext.DeployCredentialsUserName);
+                //        string fullExePath = Path.GetFullPath(dropkickExePath);
+                //        _taskExecutionContext.Info("For Options.ExecutablePath {0}, using {1}", dropkickExePath, fullExePath);
+                //        //result = _processRunner.RunAsUser(exePath, formattedArgs, standardOutputWriter, errorOutputWriter, credentials.Domain, credentials.UserName, password);
+                //        exeResult = _processRunner.RunAsToken(fullExePath, exeParameters, standardOutputWriter, errorOutputWriter, impersonation.TokenHandle);
+                //    }
+                //}
                 string standardOutput = standardOutputWriter.GetStringBuilder().ToString();
                 string errorOutput = errorOutputWriter.GetStringBuilder().ToString();
                 if (exeResult == 0)

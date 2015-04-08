@@ -87,7 +87,7 @@ namespace Sriracha.Ioc
             builder.RegisterType<LoggerDeployStatusReporter>().AsSelf();
             Common.Logging.LogManager.Adapter = new Common.Logging.NLog.NLogLoggerFactoryAdapter((Common.Logging.Configuration.NameValueCollection)null);
             builder.Register(ctx =>
-            { return Common.Logging.LogManager.GetCurrentClassLogger(); })
+            { return Common.Logging.LogManager.GetLogger(this.GetType()); })
                     .As<Common.Logging.ILog>()
                     .SingleInstance();
         }

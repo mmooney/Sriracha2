@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Nancy;
+using Sriracha.Ioc;
 
 namespace Sriracha.Server
 {
@@ -14,7 +15,7 @@ namespace Sriracha.Server
         {
             //UseFileServer(application);
             //UseWebApi(application);
-            application.UseNancy(options => options.Bootstrapper = new NancyBootstrapper());
+            application.UseNancy(options => options.Bootstrapper = SrirachaIocProvider.GetNancyBootstrapper(new ServicePathProvider()));
         }
     }
 }

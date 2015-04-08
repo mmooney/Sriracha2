@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Nancy;
 using Sriracha.Data.Deployment;
 using Sriracha.Data.Deployment.DeploymentImpl;
 using Sriracha.Data.Ioc;
@@ -29,6 +30,11 @@ namespace Sriracha.Ioc
 
 
             return container.Resolve<IIocFactory>();
+        }
+
+        public static Nancy.Bootstrapper.INancyBootstrapper GetNancyBootstrapper(IRootPathProvider rootPathProvider)
+        {
+            return new NancyBootstrapper(rootPathProvider);
         }
     }
 

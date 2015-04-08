@@ -40,6 +40,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="Common.Logging, Version=3.1.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Common.Logging.3.1.0\lib\net40\Common.Logging.dll</HintPath>
@@ -54,6 +57,9 @@
     <Reference Include="Nancy, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Nancy.1.1\lib\net40\Nancy.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.Bootstrappers.Autofac">
+      <HintPath>..\packages\Nancy.Bootstrappers.Autofac.1.1\lib\net40\Nancy.Bootstrappers.Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.Hosting.Aspnet">
       <HintPath>..\packages\Nancy.Hosting.Aspnet.1.1\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
@@ -132,11 +138,23 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="api\ApiModule.cs" />
+    <Compile Include="api\ProjectModule.cs" />
     <Compile Include="HomeModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sriracha.Data\Sriracha.Data.csproj">
+      <Project>{5b90eb90-ba14-429d-a56a-3e7ce7cbefac}</Project>
+      <Name>Sriracha.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sriracha.Ioc\Sriracha.Ioc.csproj">
+      <Project>{811bda5d-8cd8-44e7-ad43-e7ff2b294db2}</Project>
+      <Name>Sriracha.Ioc</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

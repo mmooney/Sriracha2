@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.Server", "Sriracha.Server\Sriracha.Server.csproj", "{725F444F-E9B2-4F71-95F4-CF0A8AEEE437}"
 EndProject
@@ -35,6 +35,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.DeployTask.WindowsService", "DeployTask\Sriracha.DeployTask.WindowsService\Sriracha.DeployTask.WindowsService.csproj", "{E7F6D2DB-0333-4578-BB7F-CD57E7CFECF1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.DeployTask.Helper.Dropkick", "DeployTask\Sriracha.DeployTask.Helper.Dropkick\Sriracha.DeployTask.Helper.Dropkick.csproj", "{67103C45-9AED-4D99-9930-5DFEC91F134A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{507FF8E7-23A0-475C-BD37-67C7426A98F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LiteDB", "LiteDB", "{9037CD83-E729-4001-94D5-69C3BA84E495}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.Repository.LiteDB", "Sriracha.Repository.LiteDB\Sriracha.Repository.LiteDB.csproj", "{5B7B98B1-A2DE-4312-877A-4AC0F4A690C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,6 +84,10 @@ Global
 		{67103C45-9AED-4D99-9930-5DFEC91F134A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67103C45-9AED-4D99-9930-5DFEC91F134A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67103C45-9AED-4D99-9930-5DFEC91F134A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B7B98B1-A2DE-4312-877A-4AC0F4A690C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B7B98B1-A2DE-4312-877A-4AC0F4A690C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B7B98B1-A2DE-4312-877A-4AC0F4A690C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B7B98B1-A2DE-4312-877A-4AC0F4A690C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,5 +97,7 @@ Global
 		{DF138EF6-ACF7-4898-8A95-B3A11FC4EEF0} = {8ED1BB07-5774-448D-BA75-A217541C5CA1}
 		{E7F6D2DB-0333-4578-BB7F-CD57E7CFECF1} = {8ED1BB07-5774-448D-BA75-A217541C5CA1}
 		{67103C45-9AED-4D99-9930-5DFEC91F134A} = {8ED1BB07-5774-448D-BA75-A217541C5CA1}
+		{9037CD83-E729-4001-94D5-69C3BA84E495} = {507FF8E7-23A0-475C-BD37-67C7426A98F4}
+		{5B7B98B1-A2DE-4312-877A-4AC0F4A690C3} = {9037CD83-E729-4001-94D5-69C3BA84E495}
 	EndGlobalSection
 EndGlobal

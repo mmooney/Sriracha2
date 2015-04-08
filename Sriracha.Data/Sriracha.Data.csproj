@@ -89,6 +89,7 @@
     <Compile Include="JsonExtensions.cs" />
     <Compile Include="ListExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IProjectRepository.cs" />
     <Compile Include="Utility\IProcessRunner.cs" />
     <Compile Include="Utility\IZipper.cs" />
     <Compile Include="Utility\UtilityImpl\ProcessRunner.cs" />

@@ -13,7 +13,8 @@ namespace Sriracha.Ioc
     public enum EnumIocMode
     {
         Service,
-        DeploymentRunner
+        DeploymentRunner,
+        Web
     }
 
     public static class SrirachaIocProvider

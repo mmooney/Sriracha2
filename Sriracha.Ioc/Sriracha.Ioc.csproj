@@ -42,12 +42,17 @@
     <Reference Include="Common.Logging.Core">
       <HintPath>..\packages\Common.Logging.Core.3.1.0\lib\net40\Common.Logging.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Common.Logging.NLog30, Version=3.1.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Common.Logging.NLog30.3.1.0\lib\net40\Common.Logging.NLog30.dll</HintPath>
+    <Reference Include="Common.Logging.NLog32">
+      <HintPath>..\packages\Common.Logging.NLog32.3.1.0\lib\net40\Common.Logging.NLog32.dll</HintPath>
     </Reference>
     <Reference Include="MMDB.Shared">
       <HintPath>..\packages\MMDB.Shared.2.0.0.20\lib\net35\MMDB.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy">
+      <HintPath>..\packages\Nancy.1.1\lib\net40\Nancy.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.Bootstrappers.Autofac">
+      <HintPath>..\packages\Nancy.Bootstrappers.Autofac.1.1\lib\net40\Nancy.Bootstrappers.Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -68,6 +73,7 @@
   <ItemGroup>
     <Compile Include="AutofacBuilderWrapper.cs" />
     <Compile Include="AutofacIocFactory.cs" />
+    <Compile Include="NancyBootstrapper.cs" />
     <Compile Include="SrirachaAutofacModule.cs" />
     <Compile Include="SrirachaIocProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

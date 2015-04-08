@@ -8,7 +8,7 @@ namespace Sriracha.Web
 {
     public class HomeModule : NancyModule
     {
-        public HomeModule()
+        public HomeModule() 
         {
             Get["/"] = _ => View["index"];
         }

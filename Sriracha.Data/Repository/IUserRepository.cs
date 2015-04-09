@@ -9,7 +9,9 @@ namespace Sriracha.Data.Repository
 {
     public interface IUserRepository
     {
-        SrirachaUser TryGetUserByUserNameAndPassword(string userName, string encryptedPassword);
+        SrirachaUser TryGetUserByUserName(string userName);
         SrirachaUser GetUserById(Guid identifier);
+
+        SrirachaUser CreateUser(string userName, string emailAddress, string password, string firstName, string lastName);
     }
 }

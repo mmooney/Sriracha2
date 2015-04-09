@@ -1,19 +1,24 @@
 ﻿using Nancy;
 using Nancy.Security;
 using Nancy.Authentication.Forms;
-using Sriracha.Data.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Sriracha.Data.Managers;
 
 namespace Sriracha.Web
 {
     public class LoginModule : NancyModule
     {
-        private readonly IAuthenticator _authenticator;
+        public class LoginViewModel
+        {
+            public string ErrorMessage { get; set; }
+        }
 
-        public LoginModule(IAuthenticator authenticator) : base("login")
+        private readonly IUserManager _authenticator;
+
+        public LoginModule(IUserManager authenticator) : base("login")
         {
             _authenticator = authenticator;
 
@@ -22,8 +27,12 @@ namespace Sriracha.Web
             {  
                 string userName = this.Request.Form.userName;
                 string password = this.Request.Form.password;
-                var userID = _authenticator.AuthenticateUser(userName, password);
-                return this.LoginAndRedirect(userID);
+                var user = _authenticator.AuthenticateUser(userName, password);
+                if(user == null)
+                {
+                    return View["index", new LoginViewModel { ErrorMessage = "Login Failed" }]; 
+                }
+                return this.LoginAndRedirect(user.Id);
             };
         }
     }

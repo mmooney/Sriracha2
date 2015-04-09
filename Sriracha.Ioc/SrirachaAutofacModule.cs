@@ -1,13 +1,15 @@
 ﻿using Autofac;
 using Common.Logging.Configuration;
 using MMDB.Shared;
-using Sriracha.Data.Authentication;
-using Sriracha.Data.Authentication.Impl;
 using Sriracha.Data.Deployment;
 using Sriracha.Data.Deployment.DeploymentImpl;
+using Sriracha.Data.Identity;
+using Sriracha.Data.Identity.Impl;
 using Sriracha.Data.Impersonation;
 using Sriracha.Data.Impersonation.ImpersonationImpl;
 using Sriracha.Data.Ioc;
+using Sriracha.Data.Managers;
+using Sriracha.Data.Managers.ManagersImpl;
 using Sriracha.Data.Repository;
 using Sriracha.Data.Utility;
 using Sriracha.Data.Utility.UtilityImpl;
@@ -50,11 +52,25 @@ namespace Sriracha.Ioc
             builder.RegisterType<Zipper>().As<IZipper>();
             builder.RegisterType<ProcessRunner>().As<IProcessRunner>();
 
-            //Authentication
-            builder.RegisterType<Authenticator>().As<IAuthenticator>();
+            //Managers
+            builder.RegisterType<UserManager>().As<IUserManager>();
 
             //NancyFX
-            builder.RegisterType<Sriracha.Data.Nancy.NancyUserMapper>().As<Nancy.Authentication.Forms.IUserMapper>();
+            builder.RegisterType<Sriracha.Data.NancyFX.NancyUserMapper>().As<Nancy.Authentication.Forms.IUserMapper>();
+
+            //Identity
+            switch(_iocMode)
+            {
+                case EnumIocMode.DeploymentRunner:
+                    builder.RegisterType<ConsoleSrirachaIdentity>().As<ISrirachaIdentity>();
+                    break;
+                case EnumIocMode.Service:
+                case EnumIocMode.Web:
+                    builder.RegisterType<ConsoleSrirachaIdentity>().As<ISrirachaIdentity>();
+                    break;
+                default:
+                    throw new UnknownEnumValueException(_iocMode);
+            }
 
             //Repositories
             string repositoryAssemblyName = AppSettingsHelper.GetRequiredSetting("RepositoryAssemblyName");

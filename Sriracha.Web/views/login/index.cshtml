@@ -4,6 +4,12 @@
 
 <form method="post">
     <h1>Login</h1>
+    @if (@Model != null && !string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <h3>
+            <div style="background-color:red">@Model.ErrorMessage</div>
+        </h3>
+    }
     <table>
         <tr>
             <td>User Name:</td>

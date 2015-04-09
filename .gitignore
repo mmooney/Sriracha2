@@ -161,3 +161,4 @@ PublishTemp/**/*
 output.log
 Publish
 /NugetStaging
+/LiteDBData/**/*

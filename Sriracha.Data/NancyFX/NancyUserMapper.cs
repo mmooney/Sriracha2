@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sriracha.Data.Nancy
+namespace Sriracha.Data.NancyFX
 {
     public class NancyUserMapper : IUserMapper
     {

@@ -97,39 +97,39 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="stylesheets\bootstrap\bootstrap-theme.css" />
-    <Content Include="stylesheets\bootstrap\bootstrap-theme.min.css" />
-    <Content Include="stylesheets\bootstrap\bootstrap.css" />
-    <Content Include="stylesheets\bootstrap\bootstrap.min.css" />
-    <Content Include="stylesheets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="content\stylesheets\bootstrap\bootstrap-theme.css" />
+    <Content Include="content\stylesheets\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="content\stylesheets\bootstrap\bootstrap.css" />
+    <Content Include="content\stylesheets\bootstrap\bootstrap.min.css" />
+    <Content Include="content\stylesheets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Icon.png" />
     <Content Include="packages.config" />
     <Content Include="App_Readme\Handlebarsjs_README.md" />
     <Content Include="App_Readme\Handlebarsjs_LICENSE" />
-    <Content Include="stylesheets\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="stylesheets\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="stylesheets\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="stylesheets\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="stylesheets\bootstrap\bootstrap-theme.css.map" />
-    <Content Include="stylesheets\bootstrap\bootstrap.css.map" />
-    <None Include="scripts\vendor\jquery\jquery-2.1.1.intellisense.js" />
-    <Content Include="scripts\vendor\bootstrap\bootstrap.js" />
-    <Content Include="scripts\vendor\bootstrap\bootstrap.min.js" />
-    <Content Include="scripts\vendor\bootstrap\npm.js" />
-    <Content Include="scripts\vendor\ember\ember.debug.js" />
-    <Content Include="scripts\vendor\ember\ember.min.js" />
-    <Content Include="scripts\vendor\ember\ember.prod.js" />
-    <Content Include="scripts\vendor\ember\handlebars.amd.js" />
-    <Content Include="scripts\vendor\ember\handlebars.amd.min.js" />
-    <Content Include="scripts\vendor\ember\handlebars.js" />
-    <Content Include="scripts\vendor\ember\handlebars.min.js" />
-    <Content Include="scripts\vendor\ember\handlebars.runtime.amd.js" />
-    <Content Include="scripts\vendor\ember\handlebars.runtime.amd.min.js" />
-    <Content Include="scripts\vendor\ember\handlebars.runtime.js" />
-    <Content Include="scripts\vendor\ember\handlebars.runtime.min.js" />
-    <Content Include="scripts\vendor\jquery\jquery-2.1.1.js" />
-    <Content Include="scripts\vendor\jquery\jquery-2.1.1.min.js" />
-    <Content Include="scripts\vendor\jquery\jquery-2.1.1.min.map" />
+    <Content Include="content\stylesheets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="content\stylesheets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="content\stylesheets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="content\stylesheets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="content\stylesheets\bootstrap\bootstrap-theme.css.map" />
+    <Content Include="content\stylesheets\bootstrap\bootstrap.css.map" />
+    <None Include="content\scripts\vendor\jquery\jquery-2.1.1.intellisense.js" />
+    <Content Include="content\scripts\vendor\bootstrap\bootstrap.js" />
+    <Content Include="content\scripts\vendor\bootstrap\bootstrap.min.js" />
+    <Content Include="content\scripts\vendor\bootstrap\npm.js" />
+    <Content Include="content\scripts\vendor\ember\ember.debug.js" />
+    <Content Include="content\scripts\vendor\ember\ember.min.js" />
+    <Content Include="content\scripts\vendor\ember\ember.prod.js" />
+    <Content Include="content\scripts\vendor\ember\handlebars.amd.js" />
+    <Content Include="content\scripts\vendor\ember\handlebars.amd.min.js" />
+    <Content Include="content\scripts\vendor\ember\handlebars.js" />
+    <Content Include="content\scripts\vendor\ember\handlebars.min.js" />
+    <Content Include="content\scripts\vendor\ember\handlebars.runtime.amd.js" />
+    <Content Include="content\scripts\vendor\ember\handlebars.runtime.amd.min.js" />
+    <Content Include="content\scripts\vendor\ember\handlebars.runtime.js" />
+    <Content Include="content\scripts\vendor\ember\handlebars.runtime.min.js" />
+    <Content Include="content\scripts\vendor\jquery\jquery-2.1.1.js" />
+    <Content Include="content\scripts\vendor\jquery\jquery-2.1.1.min.js" />
+    <Content Include="content\scripts\vendor\jquery\jquery-2.1.1.min.map" />
     <Content Include="views\shared\_layout.cshtml" />
     <Content Include="views\login\index.cshtml" />
     <None Include="Web.Debug.config">
@@ -152,9 +152,7 @@
     <Compile Include="SecureModule.cs" />
     <Compile Include="SetupModule.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Sriracha.Data\Sriracha.Data.csproj">
       <Project>{5b90eb90-ba14-429d-a56a-3e7ce7cbefac}</Project>

@@ -97,6 +97,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\scripts\vendor\ember\ember-template-compiler.js" />
     <Content Include="content\stylesheets\bootstrap\bootstrap-theme.css" />
     <Content Include="content\stylesheets\bootstrap\bootstrap-theme.min.css" />
     <Content Include="content\stylesheets\bootstrap\bootstrap.css" />
@@ -104,8 +105,6 @@
     <Content Include="content\stylesheets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Icon.png" />
     <Content Include="packages.config" />
-    <Content Include="App_Readme\Handlebarsjs_README.md" />
-    <Content Include="App_Readme\Handlebarsjs_LICENSE" />
     <Content Include="content\stylesheets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="content\stylesheets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="content\stylesheets\fonts\glyphicons-halflings-regular.ttf" />

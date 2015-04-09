@@ -3,3 +3,52 @@
 }
 
 <h3>hello there @this.Context.CurrentUser.UserName ... @DateTime.Now</h3>
+<div class="container" id="sriracha-app"></div>
+
+<script type="text/x-handlebars" data-template-name="application">
+    {{outlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="index">
+    <ul>
+        {{#link-to "project"}}Projects{{/link-to}}
+    </ul>
+</script>
+
+<script type="text/x-handlebars" data-template-name="project">
+    <h2>Projects</h2>
+    {{outlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="project/index">
+    <h3>Project List</h3>
+    {{#link-to "project.create"}}Create Project{{/link-to}}
+</script>
+
+
+<script type="text/x-handlebars" data-template-name="project/create">
+    <h3>Create Project</h3>
+</script>
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+        window.SrirachaApp = Ember.Application.create({
+            rootElement: "#sriracha-app",
+            LOG_TRANSITIONS: true
+        });
+
+        window.SrirachaApp.Router.map(function () {
+            this.resource("project", function () {
+                this.route("create", { path: "create" });
+            });
+            //this.resource("user", { path: 'users/:user_id' }, function () {
+            //    this.route("editinfo", { path: "edit" });
+            //    this.route("changepassword", { path: "change-password" });
+            //    this.route("changeroles", { path: "edit-roles" });
+            //    this.route("addnote", { path: "add-note" });
+            //});
+        });
+    </script>
+}

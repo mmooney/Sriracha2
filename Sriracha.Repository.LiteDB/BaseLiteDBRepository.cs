@@ -23,7 +23,7 @@ namespace Sriracha.Repository.LiteDB
             }
             if(!Path.IsPathRooted(dbDirectory))
             {
-                dbDirectory = Path.Combine(System.Web.HttpRuntime.AppDomainAppPath, dbDirectory);
+                dbDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, dbDirectory);
             }
             dbDirectory = Path.GetFullPath(dbDirectory);
             if (!Directory.Exists(dbDirectory))

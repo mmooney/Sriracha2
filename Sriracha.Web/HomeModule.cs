@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Sriracha.Web
 {
-    public class HomeModule : NancyModule
+    public class HomeModule : SecureModule
     {
         public HomeModule() 
         {

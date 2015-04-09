@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using Common.Logging.Configuration;
+using Sriracha.Data.Authentication;
+using Sriracha.Data.Authentication.Impl;
 using Sriracha.Data.Deployment;
 using Sriracha.Data.Deployment.DeploymentImpl;
 using Sriracha.Data.Impersonation;
@@ -44,6 +46,12 @@ namespace Sriracha.Ioc
             //Utility
             builder.RegisterType<Zipper>().As<IZipper>();
             builder.RegisterType<ProcessRunner>().As<IProcessRunner>();
+
+            //Authentication
+            builder.RegisterType<Authenticator>().As<IAuthenticator>();
+
+            //NancyFX
+            builder.RegisterType<Sriracha.Data.Nancy.NancyUserMapper>().As<Nancy.Authentication.Forms.IUserMapper>();
             
             this.SetupLogging(builder);
 

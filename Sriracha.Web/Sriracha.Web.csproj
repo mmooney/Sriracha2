@@ -58,6 +58,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Nancy.1.1\lib\net40\Nancy.dll</HintPath>
     </Reference>
+    <Reference Include="Nancy.Authentication.Forms">
+      <HintPath>..\packages\Nancy.Authentication.Forms.1.1\lib\net40\Nancy.Authentication.Forms.dll</HintPath>
+    </Reference>
     <Reference Include="Nancy.Bootstrappers.Autofac">
       <HintPath>..\packages\Nancy.Bootstrappers.Autofac.1.1\lib\net40\Nancy.Bootstrappers.Autofac.dll</HintPath>
     </Reference>
@@ -126,6 +129,8 @@
     <Content Include="scripts\vendor\jquery\jquery-2.1.1.js" />
     <Content Include="scripts\vendor\jquery\jquery-2.1.1.min.js" />
     <Content Include="scripts\vendor\jquery\jquery-2.1.1.min.map" />
+    <Content Include="views\shared\_layout.cshtml" />
+    <Content Include="views\login\index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -141,7 +146,9 @@
     <Compile Include="api\ApiModule.cs" />
     <Compile Include="api\ProjectModule.cs" />
     <Compile Include="HomeModule.cs" />
+    <Compile Include="LoginModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecureModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />

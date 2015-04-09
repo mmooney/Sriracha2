@@ -58,6 +58,12 @@
     <Reference Include="MMDB.Shared">
       <HintPath>..\packages\MMDB.Shared.2.0.0.20\lib\net35\MMDB.Shared.dll</HintPath>
     </Reference>
+    <Reference Include="Nancy">
+      <HintPath>..\packages\Nancy.1.1\lib\net40\Nancy.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.Authentication.Forms">
+      <HintPath>..\packages\Nancy.Authentication.Forms.1.1\lib\net40\Nancy.Authentication.Forms.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -72,6 +78,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication\IAuthenticator.cs" />
+    <Compile Include="Authentication\Impl\Authenticator.cs" />
     <Compile Include="Deployment\DeploymentImpl\JsonDeployStatusReporter.cs" />
     <Compile Include="Deployment\DeploymentImpl\DeployTaskRunner.cs" />
     <Compile Include="Deployment\DeploymentImpl\LoggerDeployStatusReporter.cs" />
@@ -88,6 +96,8 @@
     <Compile Include="Ioc\ISrirachaIocRegistar.cs" />
     <Compile Include="JsonExtensions.cs" />
     <Compile Include="ListExtensions.cs" />
+    <Compile Include="Nancy\NancyUserIdentity.cs" />
+    <Compile Include="Nancy\NancyUserMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IProjectRepository.cs" />
     <Compile Include="Utility\IProcessRunner.cs" />

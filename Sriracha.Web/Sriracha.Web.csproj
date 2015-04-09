@@ -97,6 +97,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".jscs.json" />
+    <Content Include="content\scripts\sriracha-app.js" />
+    <Content Include="content\scripts\vendor\ember\ember-model.js" />
     <Content Include="content\scripts\vendor\ember\ember-template-compiler.js" />
     <Content Include="content\stylesheets\bootstrap\bootstrap-theme.css" />
     <Content Include="content\stylesheets\bootstrap\bootstrap-theme.min.css" />
@@ -111,6 +114,7 @@
     <Content Include="content\stylesheets\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="content\stylesheets\bootstrap\bootstrap-theme.css.map" />
     <Content Include="content\stylesheets\bootstrap\bootstrap.css.map" />
+    <Content Include=".jshintrc" />
     <None Include="content\scripts\vendor\jquery\jquery-2.1.1.intellisense.js" />
     <Content Include="content\scripts\vendor\bootstrap\bootstrap.js" />
     <Content Include="content\scripts\vendor\bootstrap\bootstrap.min.js" />
@@ -147,6 +151,7 @@
     <Compile Include="api\ProjectModule.cs" />
     <Compile Include="HomeModule.cs" />
     <Compile Include="LoginModule.cs" />
+    <Compile Include="NancyResponseExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecureModule.cs" />
     <Compile Include="SetupModule.cs" />

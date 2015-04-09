@@ -19,7 +19,18 @@ namespace Sriracha.Data.Projects.Impl
 
         public Project CreateProject(string projectName)
         {
-            return _projectRepository.CreateProject(projectName);
+            return _projectRepository.Create(projectName);
+        }
+
+        public List<Project> GetProjectList()
+        {
+            return _projectRepository.GetList();
+        }
+
+
+        public Project GetProject(Guid id)
+        {
+            return _projectRepository.Get(id);
         }
     }
 }

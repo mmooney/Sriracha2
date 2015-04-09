@@ -1,0 +1,7 @@
+{
+    "disallowSpacesInsideParentheses": false,
+    "validateJSDoc": {
+        "checkParamNames": true,
+        "requireParamTypes": true
+    }
+}

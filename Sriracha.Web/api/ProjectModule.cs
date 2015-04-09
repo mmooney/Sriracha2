@@ -17,11 +17,31 @@ namespace Sriracha.Web.api
         {
             _projectManager = projectManager;
 
-            Get["/"] = _ => "this is a project list";
+            Get["/"] = _ =>
+            {
+                var projectList = _projectManager.GetProjectList();
+                return new
+                {
+                    success = true,
+                    projects = projectList
+                };
+            };
+            Get["/{id}"] = _ => 
+            {
+                var project = _projectManager.GetProject(_.id);
+                return project;
+            };
             Post["/"] = _ => 
             {
-                var project = this.Bind<Project>();
-                return _projectManager.CreateProject(project.ProjectName);
+                try 
+                {
+                    var project = this.Bind<Project>();
+                    return _projectManager.CreateProject(project.ProjectName);
+                }
+                catch(Exception ex)
+                {
+                    return this.Response.AsError(HttpStatusCode.InternalServerError, ex.Message);
+                }
             };
         }
     }

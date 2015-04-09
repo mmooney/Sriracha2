@@ -10,5 +10,8 @@ namespace Sriracha.Data.Projects
     public interface IProjectManager
     {
         Project CreateProject(string projectName);
+
+        List<Project> GetProjectList();
+        Project GetProject(Guid id);
     }
 }

@@ -9,6 +9,8 @@ namespace Sriracha.Data.Repository
 {
     public interface IProjectRepository
     {
-        Project CreateProject(string projectName);
+        Project Create(string projectName);
+        List<Project> GetList();
+        Project Get(Guid id);
     }
 }

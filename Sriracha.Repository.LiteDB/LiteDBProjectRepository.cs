@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LiteDB;
 using Sriracha.Data.Identity;
+using MMDB.Shared;
 
 namespace Sriracha.Repository.LiteDB
 {
@@ -25,7 +26,7 @@ namespace Sriracha.Repository.LiteDB
             return collection;
         }
 
-        public Project CreateProject(string projectName)
+        public Project Create(string projectName)
         {
             if(string.IsNullOrEmpty(projectName))
             {
@@ -50,5 +51,28 @@ namespace Sriracha.Repository.LiteDB
             }
         }
 
+        public List<Project> GetList()
+        {
+            using(var db = this.GetDB())
+            {
+                var collection = this.GetCollection(db);
+                return collection.FindAll().ToList();
+            }
+        }
+
+
+        public Project Get(Guid id)
+        {
+            using (var db = this.GetDB())
+            {
+                var collection = this.GetCollection(db);
+                var item = collection.FindById(id);
+                if(item == null)
+                {
+                    throw new RecordNotFoundException<Project>(id);
+                }
+                return item;
+            }
+        }
     }
 }

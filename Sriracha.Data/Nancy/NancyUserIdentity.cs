@@ -1,4 +1,5 @@
 ﻿using Nancy.Security;
+using Sriracha.Data.Dto.Account;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +10,14 @@ namespace Sriracha.Data.Nancy
 {
     public class NancyUserIdentity : IUserIdentity
     {
-        public IEnumerable<string> Claims { get; private set; }
-        public string UserName { get; private set; }
+        private readonly SrirachaUser _user;
 
-        public NancyUserIdentity(string userName, IEnumerable<string> claims)
+        public IEnumerable<string> Claims { get { return null; } }
+        public string UserName { get { return _user.UserName; }}
+
+        public NancyUserIdentity(SrirachaUser user)
         {
-            this.UserName = userName;
-            if(claims != null)
-            {
-                this.Claims = claims.ToList();
-            }
+            _user = user;
         }
     }
 }

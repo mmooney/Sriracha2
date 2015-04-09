@@ -20,6 +20,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.DeployRunner", "Sr
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.Ioc", "Sriracha.Ioc\Sriracha.Ioc.csproj", "{811BDA5D-8CD8-44E7-AD43-E7FF2B294DB2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5B7B98B1-A2DE-4312-877A-4AC0F4A690C3} = {5B7B98B1-A2DE-4312-877A-4AC0F4A690C3}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.DeployTask.WebApplication", "DeployTask\Sriracha.DeployTask.WebApplication\Sriracha.DeployTask.WebApplication.csproj", "{330F28D2-4C6B-415B-90FA-0598D24AF074}"
 EndProject

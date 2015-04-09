@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Common.Logging.Configuration;
+using MMDB.Shared;
 using Sriracha.Data.Authentication;
 using Sriracha.Data.Authentication.Impl;
 using Sriracha.Data.Deployment;
@@ -7,6 +8,7 @@ using Sriracha.Data.Deployment.DeploymentImpl;
 using Sriracha.Data.Impersonation;
 using Sriracha.Data.Impersonation.ImpersonationImpl;
 using Sriracha.Data.Ioc;
+using Sriracha.Data.Repository;
 using Sriracha.Data.Utility;
 using Sriracha.Data.Utility.UtilityImpl;
 using Sriracha.Data.Validation;
@@ -14,12 +16,13 @@ using Sriracha.Data.Validation.ValidationImpl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Sriracha.Ioc
 {
-    class SrirachaAutofacModule : Module
+    class SrirachaAutofacModule : Autofac.Module
     {
         private EnumIocMode _iocMode;
 
@@ -52,6 +55,10 @@ namespace Sriracha.Ioc
 
             //NancyFX
             builder.RegisterType<Sriracha.Data.Nancy.NancyUserMapper>().As<Nancy.Authentication.Forms.IUserMapper>();
+
+            //Repositories
+            string repositoryAssemblyName = AppSettingsHelper.GetRequiredSetting("RepositoryAssemblyName");
+            this.RegisterRepositories(builder, repositoryAssemblyName);
             
             this.SetupLogging(builder);
 
@@ -114,6 +121,24 @@ namespace Sriracha.Ioc
             var rule = new NLog.Config.LoggingRule("*", NLog.LogLevel.Trace, consoleTarget);
             loggingConfig.LoggingRules.Add(rule);
             NLog.LogManager.Configuration = loggingConfig;
+        }
+
+        private void RegisterRepositories(ContainerBuilder builder, string assemblyName)
+        {
+            var assembly = Assembly.Load(assemblyName.Replace(".dll", ""));
+            var typeList = assembly.GetTypes()
+                            .Where(p => typeof(ISrirachaRepositoryRegistar).IsAssignableFrom(p)
+                                    && p.IsClass).ToList();
+            if (typeList == null || typeList.Count == 0)
+            {
+                throw new Exception("Failed to find class implementing ISrirachaRepositoryRegistar in " + assemblyName);
+            }
+            if (typeList.Count > 1)
+            {
+                throw new Exception(string.Format("Found multiple classes implementing ISrirachaRepositoryRegistar in {0}: {1}", assemblyName, string.Join(",", typeList.Select(i => i.FullName))));
+            }
+            var registrar = (ISrirachaRepositoryRegistar)Activator.CreateInstance(typeList[0]);
+            registrar.RegisterRepositories(new AutofacBuilderWrapper(builder));
         }
     }
 }

@@ -56,8 +56,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.Hosting.3.0.1\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
     </Reference>
-    <Reference Include="MMDB.Shared">
-      <HintPath>..\packages\MMDB.Shared.2.0.0.20\lib\net35\MMDB.Shared.dll</HintPath>
+    <Reference Include="MMDB.Shared, Version=2.0.0.21, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MMDB.Shared.2.0.0.21\lib\net35\MMDB.Shared.dll</HintPath>
     </Reference>
     <Reference Include="Nancy, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

@@ -36,8 +36,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ThirdParty\dropkick-trunk\dropkick.dll</HintPath>
     </Reference>
-    <Reference Include="MMDB.Shared">
-      <HintPath>..\..\packages\MMDB.Shared.2.0.0.20\lib\net35\MMDB.Shared.dll</HintPath>
+    <Reference Include="MMDB.Shared, Version=2.0.0.21, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\MMDB.Shared.2.0.0.21\lib\net35\MMDB.Shared.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

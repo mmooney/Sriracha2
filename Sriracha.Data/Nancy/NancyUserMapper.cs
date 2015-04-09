@@ -1,6 +1,7 @@
 ﻿using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.Security;
+using Sriracha.Data.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,16 @@ namespace Sriracha.Data.Nancy
 {
     public class NancyUserMapper : IUserMapper
     {
+        private readonly IUserRepository _userRepository;
+
+        public NancyUserMapper(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
         public IUserIdentity GetUserFromIdentifier(Guid identifier, NancyContext context)
         {
-            return new NancyUserIdentity("User-" + identifier.ToString(), null);
+            var user = _userRepository.GetUserById(identifier);
+            return new NancyUserIdentity(user);
         }
     }
 }

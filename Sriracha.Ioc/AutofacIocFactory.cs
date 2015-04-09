@@ -29,8 +29,6 @@ namespace Sriracha.Ioc
             }
         }
 
-
-
         public object Get(Type type, Dictionary<Type, object> parameters = null)
         {
             if (parameters != null && parameters.Count > 0)

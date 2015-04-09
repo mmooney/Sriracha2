@@ -72,6 +72,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -90,6 +91,7 @@
     <Compile Include="Deployment\TaskExecutionContext.cs" />
     <Compile Include="Dto\Account\SrirachaUser.cs" />
     <Compile Include="Dto\BaseDto.cs" />
+    <Compile Include="Dto\Projects\Project.cs" />
     <Compile Include="Identity\Impl\ConsoleSrirachaIdentity.cs" />
     <Compile Include="Identity\Impl\WebSrirachaIdentity.cs" />
     <Compile Include="Identity\ISrirachaIdentity.cs" />
@@ -106,6 +108,8 @@
     <Compile Include="Managers\ManagersImpl\UserManager.cs" />
     <Compile Include="NancyFX\NancyUserIdentity.cs" />
     <Compile Include="NancyFX\NancyUserMapper.cs" />
+    <Compile Include="Projects\Impl\ProjectManager.cs" />
+    <Compile Include="Projects\IProjectManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IProjectRepository.cs" />
     <Compile Include="Repository\ISrirachaRepositoryRegistar.cs" />

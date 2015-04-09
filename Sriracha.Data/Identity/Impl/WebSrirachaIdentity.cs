@@ -3,29 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Sriracha.Data.Identity.Impl
 {
     public class WebSrirachaIdentity : ISrirachaIdentity
     {
-        private readonly Nancy.Security.IUserIdentity _nancyUserIdentity;
+        private readonly Nancy.NancyContext _context;
 
-        public WebSrirachaIdentity(Nancy.Security.IUserIdentity nancyUserIdentity)
+        public WebSrirachaIdentity(Nancy.NancyContext context)
         {
-            _nancyUserIdentity = nancyUserIdentity;
+            _context = context;    
         }
 
         public string UserName
         {
             get 
-            { 
-                if(_nancyUserIdentity != null)
+            {
+                if (HttpContext.Current != null && HttpContext.Current.User != null
+                        && HttpContext.Current.User.Identity != null
+                        && !string.IsNullOrEmpty(HttpContext.Current.User.Identity.Name))
                 {
-                    return _nancyUserIdentity.UserName;
+                    return HttpContext.Current.User.Identity.Name;
+                }
+                else if (_context != null && _context.CurrentUser != null 
+                        && !string.IsNullOrEmpty(_context.CurrentUser.UserName))
+                {
+                    return _context.CurrentUser.UserName;
                 }
                 else
                 {
-                    return "(None)";
+                    return Environment.UserName;
                 }
             }
         }

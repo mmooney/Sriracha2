@@ -10,6 +10,8 @@ using Sriracha.Data.Impersonation.ImpersonationImpl;
 using Sriracha.Data.Ioc;
 using Sriracha.Data.Managers;
 using Sriracha.Data.Managers.ManagersImpl;
+using Sriracha.Data.Projects;
+using Sriracha.Data.Projects.Impl;
 using Sriracha.Data.Repository;
 using Sriracha.Data.Utility;
 using Sriracha.Data.Utility.UtilityImpl;
@@ -54,6 +56,7 @@ namespace Sriracha.Ioc
 
             //Managers
             builder.RegisterType<UserManager>().As<IUserManager>();
+            builder.RegisterType<ProjectManager>().As<IProjectManager>();
 
             //NancyFX
             builder.RegisterType<Sriracha.Data.NancyFX.NancyUserMapper>().As<Nancy.Authentication.Forms.IUserMapper>();
@@ -66,7 +69,7 @@ namespace Sriracha.Ioc
                     break;
                 case EnumIocMode.Service:
                 case EnumIocMode.Web:
-                    builder.RegisterType<ConsoleSrirachaIdentity>().As<ISrirachaIdentity>();
+                    builder.RegisterType<WebSrirachaIdentity>().As<ISrirachaIdentity>();
                     break;
                 default:
                     throw new UnknownEnumValueException(_iocMode);

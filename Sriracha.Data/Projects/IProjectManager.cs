@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sriracha.Data.Repository
+namespace Sriracha.Data.Projects
 {
-    public interface IProjectRepository
+    public interface IProjectManager
     {
         Project CreateProject(string projectName);
     }

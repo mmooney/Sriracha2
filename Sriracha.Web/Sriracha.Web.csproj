@@ -21,6 +21,7 @@
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,6 +41,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxMin">
+      <HintPath>..\packages\AjaxMin.4.48.4489.28432\lib\net20\AjaxMin.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
@@ -50,10 +57,26 @@
     <Reference Include="Common.Logging.Core">
       <HintPath>..\packages\Common.Logging.Core.3.1.0\lib\net40\Common.Logging.Core.dll</HintPath>
     </Reference>
+    <Reference Include="EcmaScript.NET">
+      <HintPath>..\packages\EcmaScript.Net.1.0.1.0\lib\net20\EcmaScript.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="HTMLBarsHelper">
+      <HintPath>..\packages\HTMLBarsHelper.1.0.1\lib\net45\HTMLBarsHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Jurassic">
+      <HintPath>..\packages\Jurassic.2.2.0\lib\Jurassic.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="MMDB.Shared, Version=2.0.0.21, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MMDB.Shared.2.0.0.21\lib\net35\MMDB.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="MsieJavaScriptEngine">
+      <HintPath>..\packages\MsieJavaScriptEngine.1.2.0\lib\net40\MsieJavaScriptEngine.dll</HintPath>
     </Reference>
     <Reference Include="Nancy, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -75,6 +98,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SquishIt.Framework">
+      <HintPath>..\packages\SquishIt.0.9.7\lib\SquishIt.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -84,6 +110,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.2\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
@@ -95,17 +124,58 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Yahoo.Yui.Compressor">
+      <HintPath>..\packages\YUICompressor.NET.2.3.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include=".jscs.json" />
-    <Content Include="content\scripts\sriracha-app.js" />
-    <Content Include="content\scripts\vendor\ember\ember-model.js" />
-    <Content Include="content\scripts\vendor\ember\ember-template-compiler.js" />
+    <Content Include="content\scripts\sriracha-app\templates\application.hbs.js">
+      <DependentUpon>application.hbs</DependentUpon>
+    </Content>
+    <Content Include="content\scripts\sriracha-app\js\sriracha-app.js" />
+    <Content Include="content\scripts\sriracha-app\templates\index.hbs.js">
+      <DependentUpon>index.hbs</DependentUpon>
+    </Content>
+    <Content Include="content\scripts\sriracha-app\templates\project\create.hbs.js">
+      <DependentUpon>create.hbs</DependentUpon>
+    </Content>
+    <Content Include="content\scripts\sriracha-app\templates\project\index.hbs.js">
+      <DependentUpon>index.hbs</DependentUpon>
+    </Content>
+    <None Include="content\scripts\sriracha-app\templates\project\view.hbs" />
+    <Content Include="content\scripts\sriracha-app\templates\project\view.hbs.js">
+      <DependentUpon>view.hbs</DependentUpon>
+    </Content>
+    <Content Include="content\scripts\sriracha-app\templates\sriracha-app-templates.js" />
+    <Content Include="content\scripts\vendor\ember\1.10\ember-model.js" />
+    <Content Include="content\scripts\vendor\ember\1.10\ember-template-compiler.js" />
+    <Content Include="content\scripts\vendor\ember\1.10\ember.debug.js" />
+    <Content Include="content\scripts\vendor\ember\1.10\ember.js" />
+    <Content Include="content\scripts\vendor\ember\1.10\ember.min.js" />
+    <Content Include="content\scripts\vendor\ember\1.10\ember.prod.js" />
+    <Content Include="content\scripts\vendor\ember\1.10\handlebars.amd.js" />
+    <Content Include="content\scripts\vendor\ember\1.10\handlebars.amd.min.js" />
+    <Content Include="content\scripts\vendor\ember\1.10\handlebars.js" />
+    <Content Include="content\scripts\vendor\ember\1.10\handlebars.min.js" />
+    <Content Include="content\scripts\vendor\ember\1.10\handlebars.runtime.amd.js" />
+    <Content Include="content\scripts\vendor\ember\1.10\handlebars.runtime.amd.min.js" />
+    <Content Include="content\scripts\vendor\ember\1.10\handlebars.runtime.js" />
+    <Content Include="content\scripts\vendor\ember\1.10\handlebars.runtime.min.js" />
+    <Content Include="content\scripts\vendor\ember\1.11\ember-model.js" />
+    <Content Include="content\scripts\vendor\ember\1.11\ember-template-compiler.js" />
     <Content Include="content\stylesheets\bootstrap\bootstrap-theme.css" />
     <Content Include="content\stylesheets\bootstrap\bootstrap-theme.min.css" />
     <Content Include="content\stylesheets\bootstrap\bootstrap.css" />
     <Content Include="content\stylesheets\bootstrap\bootstrap.min.css" />
     <Content Include="content\stylesheets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="gruntfile.js" />
     <Content Include="Icon.png" />
     <Content Include="packages.config" />
     <Content Include="content\stylesheets\fonts\glyphicons-halflings-regular.woff2" />
@@ -115,21 +185,28 @@
     <Content Include="content\stylesheets\bootstrap\bootstrap-theme.css.map" />
     <Content Include="content\stylesheets\bootstrap\bootstrap.css.map" />
     <Content Include=".jshintrc" />
+    <Content Include="content\scripts\sriracha-app\templates\application.hbs" />
+    <Content Include="content\scripts\sriracha-app\templates\index.hbs" />
+    <Content Include="content\scripts\vendor\ember\1.11\handlebars.min.js.map">
+      <DependentUpon>handlebars.min.js</DependentUpon>
+    </Content>
+    <Content Include="content\scripts\sriracha-app\templates\project\index.hbs" />
+    <Content Include="content\scripts\sriracha-app\templates\project\create.hbs" />
     <None Include="content\scripts\vendor\jquery\jquery-2.1.1.intellisense.js" />
     <Content Include="content\scripts\vendor\bootstrap\bootstrap.js" />
     <Content Include="content\scripts\vendor\bootstrap\bootstrap.min.js" />
     <Content Include="content\scripts\vendor\bootstrap\npm.js" />
-    <Content Include="content\scripts\vendor\ember\ember.debug.js" />
-    <Content Include="content\scripts\vendor\ember\ember.min.js" />
-    <Content Include="content\scripts\vendor\ember\ember.prod.js" />
-    <Content Include="content\scripts\vendor\ember\handlebars.amd.js" />
-    <Content Include="content\scripts\vendor\ember\handlebars.amd.min.js" />
-    <Content Include="content\scripts\vendor\ember\handlebars.js" />
-    <Content Include="content\scripts\vendor\ember\handlebars.min.js" />
-    <Content Include="content\scripts\vendor\ember\handlebars.runtime.amd.js" />
-    <Content Include="content\scripts\vendor\ember\handlebars.runtime.amd.min.js" />
-    <Content Include="content\scripts\vendor\ember\handlebars.runtime.js" />
-    <Content Include="content\scripts\vendor\ember\handlebars.runtime.min.js" />
+    <Content Include="content\scripts\vendor\ember\1.11\ember.debug.js" />
+    <Content Include="content\scripts\vendor\ember\1.11\ember.min.js" />
+    <Content Include="content\scripts\vendor\ember\1.11\ember.prod.js" />
+    <Content Include="content\scripts\vendor\ember\1.11\handlebars.amd.js" />
+    <Content Include="content\scripts\vendor\ember\1.11\handlebars.amd.min.js" />
+    <Content Include="content\scripts\vendor\ember\1.11\handlebars.js" />
+    <Content Include="content\scripts\vendor\ember\1.11\handlebars.min.js" />
+    <Content Include="content\scripts\vendor\ember\1.11\handlebars.runtime.amd.js" />
+    <Content Include="content\scripts\vendor\ember\1.11\handlebars.runtime.amd.min.js" />
+    <Content Include="content\scripts\vendor\ember\1.11\handlebars.runtime.js" />
+    <Content Include="content\scripts\vendor\ember\1.11\handlebars.runtime.min.js" />
     <Content Include="content\scripts\vendor\jquery\jquery-2.1.1.js" />
     <Content Include="content\scripts\vendor\jquery\jquery-2.1.1.min.js" />
     <Content Include="content\scripts\vendor\jquery\jquery-2.1.1.min.map" />
@@ -149,6 +226,7 @@
   <ItemGroup>
     <Compile Include="api\ApiModule.cs" />
     <Compile Include="api\ProjectModule.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="HomeModule.cs" />
     <Compile Include="LoginModule.cs" />
     <Compile Include="NancyResponseExtensions.cs" />
@@ -200,11 +278,16 @@
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>
+    <PostBuildEvent>grunt emberTemplates
+
 if $(ConfigurationName) == Debug (
 xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.1.1\BuildProviders\Nancy.ViewEngines.Razor.BuildProviders.dll" "$(ProjectDir)bin\"
 xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.1.1\lib\Net40\Nancy.ViewEngines.Razor.dll" "$(ProjectDir)bin\"
 )</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

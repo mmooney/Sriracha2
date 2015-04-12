@@ -2,6 +2,7 @@
 using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.Bootstrappers.Autofac;
+using Nancy.Conventions;
 using Sriracha.Data.Identity;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,18 @@ namespace Sriracha.Ioc
         public NancyBootstrapper(IRootPathProvider rootPathProvider)
         {
             _rootPathProvider = rootPathProvider;
+        }
+
+        protected override void ApplicationStartup(ILifetimeScope container, Nancy.Bootstrapper.IPipelines pipelines)
+        {
+            base.ApplicationStartup(container, pipelines);
+        }
+
+        protected override void ConfigureConventions(Nancy.Conventions.NancyConventions nancyConventions)
+        {
+            base.ConfigureConventions(nancyConventions);
+            nancyConventions.StaticContentsConventions
+                .Add(StaticContentConventionBuilder.AddDirectory("/sriracha-app"));
         }
 
         //http://stackoverflow.com/questions/17325840/registering-startup-class-in-nancy-using-autofac-bootstrapper

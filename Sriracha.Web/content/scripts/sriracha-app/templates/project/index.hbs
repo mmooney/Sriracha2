@@ -1,0 +1,14 @@
+﻿<h3>Project List</h3>
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <th>Project Name</th>
+        </tr>
+        {{#each project in this}}
+        <tr>
+            <td>{{#link-to "project.view" project.id}}{{project.projectName}}{{/link-to}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{#link-to "project.create"}}Create Project{{/link-to}}

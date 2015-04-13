@@ -11,11 +11,16 @@ namespace Sriracha.Server
 {
     public class ServicePathProvider : IRootPathProvider
     {
+        private readonly string _webPath;
+        public ServicePathProvider(string webPath)
+        {
+            _webPath = webPath;
+        }
+
         public string GetRootPath()
         {
             var currentDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string webPath = AppSettingsHelper.GetRequiredSetting("WebPath");
-            var fullWebPath = Path.GetFullPath(Path.Combine(currentDirectory, webPath));
+            var fullWebPath = Path.GetFullPath(Path.Combine(currentDirectory, _webPath));
             if(!Directory.Exists(fullWebPath))
             {
                 throw new Exception("Web Path " + fullWebPath + " does not exist");

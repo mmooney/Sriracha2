@@ -67,6 +67,9 @@
       <HintPath>..\packages\Jurassic.2.2.0\lib\Jurassic.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -97,6 +100,9 @@
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="SquishIt.Framework">
       <HintPath>..\packages\SquishIt.0.9.7\lib\SquishIt.Framework.dll</HintPath>
@@ -175,6 +181,7 @@
     <Content Include="content\stylesheets\bootstrap\bootstrap.css" />
     <Content Include="content\stylesheets\bootstrap\bootstrap.min.css" />
     <Content Include="content\stylesheets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
     <Content Include="gruntfile.js" />
     <Content Include="Icon.png" />
     <Content Include="packages.config" />
@@ -227,6 +234,10 @@
     <Compile Include="api\ApiModule.cs" />
     <Compile Include="api\ProjectModule.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="BundlesModule.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="HomeModule.cs" />
     <Compile Include="LoginModule.cs" />
     <Compile Include="NancyResponseExtensions.cs" />

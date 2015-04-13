@@ -6,7 +6,8 @@
 
 @section Scripts
 {
-    @Html.Raw(Scripts.Render("~/sriracha-app/templates").ToHtmlString())
-    @Html.Raw(Scripts.Render("~/sriracha-app/scripts").ToHtmlString())
+    @Html.Raw(SquishIt.Framework.Bundle.JavaScript().RenderNamed("sriracha-app-templates"))
+    @Html.Raw(SquishIt.Framework.Bundle.JavaScript().RenderNamed("sriracha-app-scripts").ToString())
+
 }
 

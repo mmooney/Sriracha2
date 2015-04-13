@@ -1674,7 +1674,6 @@ Ember.RESTAdapter = Ember.Adapter.extend({
     var collectionKey = get(klass, 'collectionKey'),
         dataToLoad = collectionKey ? get(data, collectionKey) : data;
 
-    console.log(klass, collectionKey, dataToLoad);
     records.load(klass, dataToLoad);
   },
 

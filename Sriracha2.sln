@@ -43,7 +43,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LiteDB", "LiteDB", "{9037CD83-E729-4001-94D5-69C3BA84E495}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.Repository.LiteDB", "Sriracha.Repository.LiteDB\Sriracha.Repository.LiteDB.csproj", "{5B7B98B1-A2DE-4312-877A-4AC0F4A690C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.Repository.LiteDB", "Repository\LiteDB\Sriracha.Repository.LiteDB\Sriracha.Repository.LiteDB.csproj", "{5B7B98B1-A2DE-4312-877A-4AC0F4A690C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -32,11 +32,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LiteDB">
-      <HintPath>..\packages\LiteDB.1.0.0\lib\net40\LiteDB.dll</HintPath>
+    <Reference Include="LiteDB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\LiteDB.1.0.0\lib\net40\LiteDB.dll</HintPath>
     </Reference>
-    <Reference Include="MMDB.Shared">
-      <HintPath>..\packages\MMDB.Shared.2.0.0.21\lib\net35\MMDB.Shared.dll</HintPath>
+    <Reference Include="MMDB.Shared, Version=2.0.0.21, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\MMDB.Shared.2.0.0.21\lib\net35\MMDB.Shared.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,13 +57,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sriracha.Data\Sriracha.Data.csproj">
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Sriracha.Data\Sriracha.Data.csproj">
       <Project>{5b90eb90-ba14-429d-a56a-3e7ce7cbefac}</Project>
       <Name>Sriracha.Data</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

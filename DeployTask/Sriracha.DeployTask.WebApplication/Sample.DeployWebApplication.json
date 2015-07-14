@@ -1,0 +1,23 @@
+{
+    "SourceWebsitePath": "REPLACE_ME",
+    "TargetMachineName": "REPLACE_ME",
+    "ApplicationPoolName": "REPLACE_ME",
+    "SiteName": "REPLACE_ME",
+    "TargetMachinePassword": "REPLACE_ME",
+    "TargetMachineUserName": "REPLACE_ME",
+    "TargetWebsitePath": "REPLACE_ME",
+    "VirtualDirectoryName": "REPLACE_ME",
+    "DeleteTargetBeforeDeploy": "REPLACE_ME",
+    "AppSettingValues": {
+        "TestAppSetting1": "TestValue1",
+        "TestAppSetting2": "TestValue2"
+    },
+    "ConnectionStringValues": {
+        "TestConnection1": "TestConnectionValue1",
+        "TestConnection2": "TestConnectionValue2",
+        "DefaultConnection": "hello there"
+    },
+    "XpathValues": {
+        "//some/Xpath[@WithAFilter='true']/@WithAttribute": "TestCustomXPathValue" 
+    }
+}

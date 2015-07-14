@@ -49,7 +49,15 @@
       </fileset>
     </copy>
 
-    <copy todir=".\NugetStaging\Azure\tools\Runners\WebApplication">
+    <copy todir=".\NugetStaging\WebApplication\tools\Runners\WebApplication">
+      <fileset basedir=".\Sriracha.DeployRunner\bin\Release">
+        <include name="**/*.config"/>
+        <include name="**/*.dll"/>
+        <include name="**/*.exe"/>
+      </fileset>
+    </copy>
+
+    <copy todir=".\NugetStaging\WebApplication\tools\Runners\WebApplication">
       <fileset basedir=".\DeployTask\Sriracha.DeployTask.WebApplication\bin\Release">
         <include name="**/*.config"/>
         <include name="**/*.dll"/>
@@ -57,7 +65,7 @@
         <include name="**/*.json"/>
       </fileset>
     </copy>
-    <copy todir=".\NugetStaging\Azure\tools">
+    <copy todir=".\NugetStaging\WebApplication\tools">
       <fileset basedir=".\DeployTask\Sriracha.DeployTask.WebApplication\tools">
         <include name="**/*.ps1"/>
       </fileset>
@@ -89,7 +97,7 @@
       <arg value="detailed"/>
       <arg value="-Tool"/>
       <arg value="-BasePath"/>
-      <arg value=".\NugetStaging\Azure"/>
+      <arg value=".\NugetStaging\WebApplication"/>
       <arg value="-Version"/>
       <arg value="${BuildNumber}"/>
     </exec>

@@ -232,6 +232,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="api\ApiModule.cs" />
+    <Compile Include="api\BuildModule.cs" />
     <Compile Include="api\ProjectModule.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="BundlesModule.cs" />
@@ -247,6 +248,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Sriracha.ApiDto\Sriracha.ApiDto.csproj">
+      <Project>{dd185ce6-8e95-4aa1-8ec7-69783daa3bf5}</Project>
+      <Name>Sriracha.ApiDto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Sriracha.Data\Sriracha.Data.csproj">
       <Project>{5b90eb90-ba14-429d-a56a-3e7ce7cbefac}</Project>
       <Name>Sriracha.Data</Name>

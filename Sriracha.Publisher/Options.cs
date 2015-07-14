@@ -11,22 +11,49 @@ namespace Sriracha.Publisher
     {
         public Options()
         {
-            this.PublishVerb = new PublishSubOptions();
+            this.PublishVerb = new PublishOptions();
+
         }
 
         [VerbOption("publish")]
-        public PublishSubOptions PublishVerb { get; set; }
+        public PublishOptions PublishVerb { get; set; }
 
-        public class PublishSubOptions
+        [Option('p', "pause")]
+        public bool Pause { get; set; }
+
+        public class PublishOptions
         {
-            [Option('x', "url")]
-            public string Url { get; set; }
+            [Option('u', "apiurl")]
+            public string ApiUrl { get; set; }
 
-            [Option('u', "user")]
+            [Option('d', "directory")]
+            public string Directory { get; set; }
+
+            [Option('f', "file")]
+            public string File { get; set; }
+
+            [Option("userName")]
             public string UserName { get; set; }
 
-            [Option('u', "password")]
+            [Option("password")]
             public string Password { get; set; }
+
+            [Option("filePattern")]
+            public string FilePattern { get; set; }
+
+            [Option("newfilename")]
+            public string NewFileName { get; set; }
+
+            [Option('p', "project")]
+            public string ProjectId { get; set; }
+
+            [Option('c', "component")]
+            public string ComponentId { get; set; }
+
+            [Option('v', "version")]
+            public string Version { get; set; }
+
+            public string BranchId { get; set; }
         }
     }
 }

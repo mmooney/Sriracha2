@@ -82,6 +82,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\IAuthenticator.cs" />
+    <Compile Include="Builds\IBuildManager.cs" />
+    <Compile Include="Builds\Impl\BuildManagerImpl.cs" />
     <Compile Include="Deployment\DeploymentImpl\JsonDeployStatusReporter.cs" />
     <Compile Include="Deployment\DeploymentImpl\DeployTaskRunner.cs" />
     <Compile Include="Deployment\DeploymentImpl\LoggerDeployStatusReporter.cs" />

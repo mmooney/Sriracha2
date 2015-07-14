@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.Repository.LiteDB"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.Publisher", "Sriracha.Publisher\Sriracha.Publisher.csproj", "{28299FD5-E570-44B1-95F1-9A3D7A1260B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sriracha.ApiDto", "Sriracha.ApiDto\Sriracha.ApiDto.csproj", "{DD185CE6-8E95-4AA1-8EC7-69783DAA3BF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -94,9 +96,11 @@ Global
 		{5B7B98B1-A2DE-4312-877A-4AC0F4A690C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B7B98B1-A2DE-4312-877A-4AC0F4A690C3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{28299FD5-E570-44B1-95F1-9A3D7A1260B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{28299FD5-E570-44B1-95F1-9A3D7A1260B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28299FD5-E570-44B1-95F1-9A3D7A1260B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{28299FD5-E570-44B1-95F1-9A3D7A1260B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD185CE6-8E95-4AA1-8EC7-69783DAA3BF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD185CE6-8E95-4AA1-8EC7-69783DAA3BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD185CE6-8E95-4AA1-8EC7-69783DAA3BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD185CE6-8E95-4AA1-8EC7-69783DAA3BF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,6 +15,11 @@
     <!--<msbuild project=".\Sriracha.Deploy.sln" target="Rebuild">
       <property name="Configuration" value="ReleaseRepositories"/>
     </msbuild>-->
+    <exec program="npm" verbose="true">
+      <arg value="install"/>
+      <arg value="-g"/>
+      <arg value="grunt-cli"/>
+    </exec>
     <msbuild project=".\Sriracha2.sln" target="Rebuild">
       <property name="Configuration" value="Release"/>
     </msbuild>

@@ -83,7 +83,7 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
                 }
                 if(!File.Exists(configFile))
                 {
-                    throw new FileNotFoundException(configFile);
+                    throw new FileNotFoundException("configFile not found: " + configFile);
                 }
                 string data = File.ReadAllText(configFile);
                 configObject = JsonConvert.DeserializeObject(data, configType);

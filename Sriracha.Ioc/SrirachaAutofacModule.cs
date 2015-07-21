@@ -2,6 +2,7 @@
 using Common.Logging.Configuration;
 using MMDB.Shared;
 using Sriracha.Data.Builds;
+using Sriracha.Data.Builds.Impl;
 using Sriracha.Data.Deployment;
 using Sriracha.Data.Deployment.DeploymentImpl;
 using Sriracha.Data.Identity;
@@ -24,7 +25,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Compilation;
 
 namespace Sriracha.Ioc
 {
@@ -59,7 +59,7 @@ namespace Sriracha.Ioc
             //Managers
             builder.RegisterType<UserManager>().As<IUserManager>();
             builder.RegisterType<ProjectManager>().As<IProjectManager>();
-            builder.RegisterType<BuildManager>().As<IBuildManager>();
+            builder.RegisterType<BuildManagerImpl>().As<IBuildManager>();
 
             //NancyFX
             builder.RegisterType<Sriracha.Data.NancyFX.NancyUserMapper>().As<Nancy.Authentication.Forms.IUserMapper>();
@@ -72,15 +72,16 @@ namespace Sriracha.Ioc
                     break;
                 case EnumIocMode.Service:
                 case EnumIocMode.Web:
+                    //Repositories
+                    string repositoryAssemblyName = AppSettingsHelper.GetRequiredSetting("RepositoryAssemblyName");
+                    this.RegisterRepositories(builder, repositoryAssemblyName);
+
                     builder.RegisterType<WebSrirachaIdentity>().As<ISrirachaIdentity>();
                     break;
                 default:
                     throw new UnknownEnumValueException(_iocMode);
             }
 
-            //Repositories
-            string repositoryAssemblyName = AppSettingsHelper.GetRequiredSetting("RepositoryAssemblyName");
-            this.RegisterRepositories(builder, repositoryAssemblyName);
             
             this.SetupLogging(builder);
 

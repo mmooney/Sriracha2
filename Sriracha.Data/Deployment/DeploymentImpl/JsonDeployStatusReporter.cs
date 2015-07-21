@@ -1,5 +1,7 @@
 ﻿using Common.Logging;
 using CsvHelper;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,7 +19,7 @@ namespace Sriracha.Data.Deployment.DeploymentImpl
         public class JsonMessage
         {
             public DateTime DateTimeUtc { get; set; }
-            public LogLevel LogLevel { get; set; }
+            [JsonConverter(typeof(StringEnumConverter))] public LogLevel LogLevel { get; set; }
             public string Message { get; set; }
             public string Detail { get; set; }
         }

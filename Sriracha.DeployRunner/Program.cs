@@ -73,7 +73,9 @@ namespace Sriracha.DeployRunner
                 }
                 pause = options.Pause;
 
-                string workingDirectory = StringHelper.IsNullOrEmpty(options.WorkingDirectory, Path.GetDirectoryName(Path.GetFullPath(options.TaskBinary)));
+                //string workingDirectory = StringHelper.IsNullOrEmpty(options.WorkingDirectory, Path.GetDirectoryName(Path.GetFullPath(options.TaskBinary)));
+                string workingDirectory = StringHelper.IsNullOrEmpty(options.WorkingDirectory, Environment.CurrentDirectory);
+
                 var taskRunner = iocContainer.Get<IDeployTaskRunner>();
                 switch(options.OutputFormat)
                 {

@@ -37,13 +37,13 @@ namespace Sriracha.DeployTask.WebApplication.DeployWebApplication
             }
             var typedConfig = (DeployWebApplicationTaskConfig)config;
             var deployment = new DropkickWebDeployment();
-            using(var dropkickContext = _dropkickRunner.Create(context))
+            using (var dropkickContext = _dropkickRunner.Create(context))
             {
                 var serverMap = deployment.GetDefaultServerMap();
                 serverMap["Website"] = typedConfig.TargetMachineName;
                 var settings = new DropkickWebDeploymentSettings
                 {
-                    SourceWebsitePath = typedConfig.SourceWebsitePath,
+                    SourceWebsitePath = System.IO.Path.GetFullPath(typedConfig.SourceWebsitePath),
                     DeleteTargetBeforeDeploy = typedConfig.DeleteTargetBeforeDeploy,
                     ApplicationPoolName = typedConfig.ApplicationPoolName,
                     Environment = "ENV",

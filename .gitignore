@@ -163,3 +163,4 @@ Publish
 /NugetStaging
 /LiteDBData/**/*
 /LiteDBData
+/.vs/config

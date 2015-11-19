@@ -70,7 +70,29 @@
         <include name="**/*.ps1"/>
       </fileset>
     </copy>
-  </target>
+
+		<copy todir=".\NugetStaging\WindowsService\tools\Runners\WindowsService">
+			<fileset basedir=".\Sriracha.DeployRunner\bin\Release">
+				<include name="**/*.config"/>
+				<include name="**/*.dll"/>
+				<include name="**/*.exe"/>
+			</fileset>
+		</copy>
+
+		<copy todir=".\NugetStaging\WebApplication\tools\Runners\WindowsService">
+			<fileset basedir=".\DeployTask\Sriracha.DeployTask.WindowsService\bin\Release">
+				<include name="**/*.config"/>
+				<include name="**/*.dll"/>
+				<include name="**/*.exe"/>
+				<include name="**/*.json"/>
+			</fileset>
+		</copy>
+		<copy todir=".\NugetStaging\WindowsService\tools">
+			<fileset basedir=".\DeployTask\Sriracha.DeployTask.WindowsService\tools">
+				<include name="**/*.ps1"/>
+			</fileset>
+		</copy>
+	</target>
 
   <target name="NuGetPackageRunners">
     <mkdir dir=".\Publish\NuGet"/>
@@ -101,7 +123,21 @@
       <arg value="-Version"/>
       <arg value="${BuildNumber}"/>
     </exec>
-  </target>
+
+		<exec program=".\.nuget\nuget.exe" verbose="true">
+			<arg value="pack"/>
+			<arg value=".\DeployTask\Sriracha.DeployTask.WindowsService\Nuget\Sriracha.DeployTask.WindowsService.csproj.nuspec"/>
+			<arg value="-OutputDirectory"/>
+			<arg value=".\Publish\NuGet"/>
+			<arg value="-Verbosity"/>
+			<arg value="detailed"/>
+			<arg value="-Tool"/>
+			<arg value="-BasePath"/>
+			<arg value=".\NugetStaging\WindowsService"/>
+			<arg value="-Version"/>
+			<arg value="${BuildNumber}"/>
+		</exec>
+	</target>
 </project>
 
 

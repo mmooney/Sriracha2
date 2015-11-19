@@ -74,11 +74,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="nuget\Sriracha.DeployTask.WebApplication.csproj.nuspec" />
+    <None Include="nuget\Sriracha.DeployTask.WindowsService.csproj.nuspec" />
     <None Include="packages.config" />
     <Content Include="Sample.DeployWindowsService.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="tools\Init.ps1" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

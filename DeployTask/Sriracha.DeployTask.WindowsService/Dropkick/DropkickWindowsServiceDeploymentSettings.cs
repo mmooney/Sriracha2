@@ -30,6 +30,6 @@ namespace Sriracha.DeployTask.WindowsService.Dropkick
         public string AppSettingValuesJson { get; set; }
         public string ConnectionStringValuesJson { get; set; }
         public string XpathValuesJson { get; set; }
-
-    }
+		public string ExecutingRole { get; set; }
+	}
 }

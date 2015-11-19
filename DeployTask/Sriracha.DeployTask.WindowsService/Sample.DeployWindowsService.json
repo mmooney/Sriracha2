@@ -1,0 +1,26 @@
+{
+	"TargetMachineUserName": "OPTIONAL",
+	"TargetMachinePassword": "OPTIONAL",
+	"TargetServiceDirectory": "REPLACE_ME",
+	"ServiceName": "REPLACE_ME",
+	"ServiceExeName": "OPTIONAL",
+	"ServiceUserName": "REPLACE_ME",
+	"ServiceUserPassword": "OPTIONAL",
+	"ServiceStartMode": "OPTIONAL",
+	"ServiceDependencies": ["OPTIONAL"],
+	"SourceServiceDirectory": "REPLACE_ME",
+	"SourceExeConfigPath": "OPTIONAL",
+	"DeleteTargetBeforeDeploy": "OPTIONAL",
+	"AppSettingValues": {
+		"TestAppSetting1": "TestValue1",
+		"TestAppSetting2": "TestValue2"
+	},
+	"ConnectionStringValues": {
+		"TestConnection1": "TestConnectionValue1",
+		"TestConnection2": "TestConnectionValue2",
+		"DefaultConnection": "hello there"
+	},
+	"XpathValues": {
+		"//some/Xpath[@WithAFilter='true']/@WithAttribute": "TestCustomXPathValue"
+	}
+}

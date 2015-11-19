@@ -55,8 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeployWindowsServiceSrirachaIocRegistar.cs" />
+    <Compile Include="RemoveWindowsService\RemoveWindowsServiceTask.cs" />
     <Compile Include="DeployWindowsService\DeployWindowsServiceTask.cs" />
     <Compile Include="DeployWindowsService\DeployWindowsServiceTaskConfig.cs" />
+    <Compile Include="RemoveWindowsService\RemoveWindowsServiceTaskConfig.cs" />
     <Compile Include="Dropkick\DropkickWindowsServiceDeployment.cs" />
     <Compile Include="Dropkick\DropkickWindowsServiceDeploymentSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,7 +74,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="nuget\Sriracha.DeployTask.WebApplication.csproj.nuspec" />
     <None Include="packages.config" />
+    <Content Include="Sample.DeployWindowsService.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

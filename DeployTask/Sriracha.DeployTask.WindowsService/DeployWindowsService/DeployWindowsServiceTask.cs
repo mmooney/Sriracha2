@@ -56,15 +56,15 @@ namespace Sriracha.DeployTask.WindowsService.DeployWindowsService
                     DeleteTargetBeforeDeploy = typedConfig.DeleteTargetBeforeDeploy,
                     AppSettingValuesJson = ToDictionaryJson(typedConfig.AppSettingValues),
                     ConnectionStringValuesJson = ToDictionaryJson(typedConfig.ConnectionStringValues),
-                    XpathValuesJson = ToDictionaryJson(typedConfig.XpathValues)
-                };
+                    XpathValuesJson = ToDictionaryJson(typedConfig.XpathValues),
+					ExecutingRole = "WindowsService"
+				};
                 dropkickContext.Run<DropkickWindowsServiceDeployment>(settings, serverMap, "WindowsService".ListMe());
 
                 context.Info("Done DeployWindowsServiceTask");
 
                 //return context.BuildResult();
             }
-            context.Info("Run... " + typedConfig.ToJson(true));
         }
 
         private string ToDictionaryJson(Dictionary<string, string> dictionary)

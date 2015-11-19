@@ -20,15 +20,20 @@ namespace Sriracha.DeployTask.WindowsService.Dropkick
 {
     internal class DropkickWindowsServiceDeployment : Deployment<DropkickWindowsServiceDeployment, DropkickWindowsServiceDeploymentSettings>
     {
-        public static Role WindowsService { get; set; }
+		public static Role WindowsService { get; set; }
+		public static Role RemoveWindowsService { get; set; }
 
-        public DropkickWindowsServiceDeployment()
+		public DropkickWindowsServiceDeployment()
         {
             Define(settings =>
             {
                 DeploymentStepsFor(WindowsService,
                                     s =>
                                     {
+										if(settings.ExecutingRole != settings.Role)
+										{
+											return;
+										}
                                         if (string.IsNullOrEmpty(settings.SourceServiceDirectory))
                                         {
                                             throw new Exception("Missing SourceServiceDirectory");
@@ -50,7 +55,7 @@ namespace Sriracha.DeployTask.WindowsService.Dropkick
                                             {
                                                 throw new Exception("Multiple *.exe files found at: " + settings.SourceServiceDirectory + ", Files: " + string.Join(",", fileList.Select(i => Path.GetFileName(i))));
                                             }
-                                            serviceExeName = fileList.First();
+											serviceExeName = Path.GetFileName(fileList.First());
                                         }
                                         if (!string.IsNullOrEmpty(settings.TargetMachineUserName) && !string.IsNullOrEmpty(settings.TargetMachinePassword))
                                         {
@@ -106,7 +111,22 @@ namespace Sriracha.DeployTask.WindowsService.Dropkick
                                             s.WinService(serviceName).Start();
                                         }
                                     });
-            });
+
+				DeploymentStepsFor(RemoveWindowsService,
+									s =>
+									{
+										if (settings.ExecutingRole != settings.Role)
+										{
+											return;
+										}
+										if (string.IsNullOrEmpty(settings.ServiceName))
+										{
+											throw new Exception("Missing ServiceName");
+										}
+										s.WinService(settings.ServiceName).Stop();
+										s.WinService(settings.ServiceName).Delete();
+									});
+			});
 
         }
 
@@ -267,8 +287,9 @@ namespace Sriracha.DeployTask.WindowsService.Dropkick
         public Dictionary<string, string> GetDefaultServerMap()
         {
             var returnValue = new Dictionary<string, string>();
-            returnValue.Add("WindowsService", string.Empty);
-            return returnValue;
+			returnValue.Add("WindowsService", string.Empty);
+			returnValue.Add("RemoveWindowsService", string.Empty);
+			return returnValue;
         }
     }
 }

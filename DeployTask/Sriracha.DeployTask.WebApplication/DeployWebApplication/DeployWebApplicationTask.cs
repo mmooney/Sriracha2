@@ -63,7 +63,6 @@ namespace Sriracha.DeployTask.WebApplication.DeployWebApplication
 
                 //return context.BuildResult();
             }
-            context.Info("Run... " + typedConfig.ToJson(true));
         }
 
         private string ToDictionaryJson(Dictionary<string, string> dictionary)

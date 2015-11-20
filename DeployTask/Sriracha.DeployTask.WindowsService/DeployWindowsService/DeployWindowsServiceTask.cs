@@ -39,19 +39,19 @@ namespace Sriracha.DeployTask.WindowsService.DeployWindowsService
             {
                 var serverMap = deployment.GetDefaultServerMap();
                 serverMap["WindowsService"] = typedConfig.TargetMachineName;
-                var settings = new DropkickWindowsServiceDeploymentSettings
-                {
-                    TargetMachineUserName  = typedConfig.TargetMachineUserName,
-                    TargetMachinePassword = typedConfig.TargetMachinePassword,
-                    TargetServiceDirectory = typedConfig.TargetServiceDirectory,
-                    ServiceName = typedConfig.ServiceName,
-                    ServiceUserName = typedConfig.ServiceUserName,
-                    ServiceUserPassword = typedConfig.ServiceUserPassword,
-                    ServiceStartMode = typedConfig.ServiceStartMode,
-                    ServiceDependencies = (typedConfig.ServiceDependencies != null && typedConfig.ServiceDependencies.Any())
-                                                ? string.Join(";", typedConfig.ServiceDependencies)
-                                                : null,
-                    SourceServiceDirectory = typedConfig.SourceServiceDirectory,
+				var settings = new DropkickWindowsServiceDeploymentSettings
+				{
+					TargetMachineUserName = typedConfig.TargetMachineUserName,
+					TargetMachinePassword = typedConfig.TargetMachinePassword,
+					TargetServiceDirectory = typedConfig.TargetServiceDirectory,
+					ServiceName = typedConfig.ServiceName,
+					ServiceUserName = typedConfig.ServiceUserName,
+					ServiceUserPassword = typedConfig.ServiceUserPassword,
+					ServiceStartMode = typedConfig.ServiceStartMode,
+					ServiceDependencies = (typedConfig.ServiceDependencies != null && typedConfig.ServiceDependencies.Any())
+												? string.Join(";", typedConfig.ServiceDependencies)
+												: null,
+					SourceServiceDirectory = System.IO.Path.GetFullPath(typedConfig.SourceServiceDirectory),
                     SourceExeConfigPath = typedConfig.SourceExeConfigPath,
                     DeleteTargetBeforeDeploy = typedConfig.DeleteTargetBeforeDeploy,
                     AppSettingValuesJson = ToDictionaryJson(typedConfig.AppSettingValues),

@@ -79,7 +79,7 @@
 			</fileset>
 		</copy>
 
-		<copy todir=".\NugetStaging\WebApplication\tools\Runners\WindowsService">
+		<copy todir=".\NugetStaging\WindowsService\tools\Runners\WindowsService">
 			<fileset basedir=".\DeployTask\Sriracha.DeployTask.WindowsService\bin\Release">
 				<include name="**/*.config"/>
 				<include name="**/*.dll"/>

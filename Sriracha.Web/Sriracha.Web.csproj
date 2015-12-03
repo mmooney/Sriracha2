@@ -64,9 +64,6 @@
     <Reference Include="EcmaScript.NET">
       <HintPath>..\packages\EcmaScript.Net.1.0.1.0\lib\net20\EcmaScript.NET.dll</HintPath>
     </Reference>
-    <Reference Include="HTMLBarsHelper">
-      <HintPath>..\packages\HTMLBarsHelper.1.0.1\lib\net45\HTMLBarsHelper.dll</HintPath>
-    </Reference>
     <Reference Include="Jurassic">
       <HintPath>..\packages\Jurassic.2.2.0\lib\Jurassic.dll</HintPath>
     </Reference>
@@ -141,16 +138,13 @@
     <Reference Include="WebGrease">
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
     </Reference>
-    <Reference Include="Yahoo.Yui.Compressor">
-      <HintPath>..\packages\YUICompressor.NET.2.3.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
+    <Reference Include="Yahoo.Yui.Compressor, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\YUICompressor.NET.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include=".jscs.json" />
-    <Content Include="content\bootstrap-theme.css" />
-    <Content Include="content\bootstrap-theme.min.css" />
-    <Content Include="content\bootstrap.css" />
-    <Content Include="content\bootstrap.min.css" />
     <Content Include="content\scripts\sriracha-app\templates\application.hbs.js">
       <DependentUpon>application.hbs</DependentUpon>
     </Content>
@@ -164,10 +158,6 @@
     <Content Include="content\scripts\sriracha-app\templates\project\index.hbs.js">
       <DependentUpon>index.hbs</DependentUpon>
     </Content>
-    <Content Include="content\bootstrap.min.css.map" />
-    <Content Include="content\bootstrap.css.map" />
-    <Content Include="content\bootstrap-theme.min.css.map" />
-    <Content Include="content\bootstrap-theme.css.map" />
     <None Include="content\scripts\sriracha-app\templates\project\view.hbs" />
     <Content Include="content\scripts\sriracha-app\templates\project\view.hbs.js">
       <DependentUpon>view.hbs</DependentUpon>
@@ -212,9 +202,6 @@
     </Content>
     <Content Include="content\scripts\sriracha-app\templates\project\index.hbs" />
     <Content Include="content\scripts\sriracha-app\templates\project\create.hbs" />
-    <None Include="content\scripts\vendor\jquery\jquery-2.1.1.intellisense.js" />
-    <Content Include="content\scripts\vendor\bootstrap\bootstrap.js" />
-    <Content Include="content\scripts\vendor\bootstrap\bootstrap.min.js" />
     <Content Include="content\scripts\vendor\bootstrap\npm.js" />
     <Content Include="content\scripts\vendor\ember\1.11\ember.debug.js" />
     <Content Include="content\scripts\vendor\ember\1.11\ember.min.js" />
@@ -227,17 +214,20 @@
     <Content Include="content\scripts\vendor\ember\1.11\handlebars.runtime.amd.min.js" />
     <Content Include="content\scripts\vendor\ember\1.11\handlebars.runtime.js" />
     <Content Include="content\scripts\vendor\ember\1.11\handlebars.runtime.min.js" />
-    <Content Include="content\scripts\vendor\jquery\jquery-2.1.1.js" />
-    <Content Include="content\scripts\vendor\jquery\jquery-2.1.1.min.js" />
-    <Content Include="content\scripts\vendor\jquery\jquery-2.1.1.min.map" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="content\scripts\vendor\bootstrap\bootstrap.js" />
+    <Content Include="content\scripts\vendor\bootstrap\bootstrap.min.js" />
+    <None Include="content\scripts\vendor\jquery\jquery-2.1.4-vsdoc.js" />
+    <Content Include="content\scripts\vendor\jquery\jquery-2.1.4.js" />
+    <Content Include="content\scripts\vendor\jquery\jquery-2.1.4.min.js" />
     <Content Include="views\shared\_layout.cshtml" />
     <Content Include="views\login\index.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="content\scripts\vendor\jquery\jquery-2.1.4.min.map" />
+    <Content Include="content\stylesheets\bootstrap\bootstrap-theme.min.css.map" />
+    <Content Include="content\stylesheets\bootstrap\bootstrap.min.css.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -265,7 +255,9 @@
     <Compile Include="SecureModule.cs" />
     <Compile Include="SetupModule.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sriracha.ApiDto\Sriracha.ApiDto.csproj">
       <Project>{dd185ce6-8e95-4aa1-8ec7-69783daa3bf5}</Project>
